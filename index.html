@@ -48,7 +48,7 @@
             <h1 class="hero-title">Lokeswar Raju Gundlapalli</h1>
             <div class="ai-subtitle">AI Engineer & ML Expert</div>
             <p class="hero-description">
-                🚀 Transforming ideas into intelligent solutions with cutting-edge AI, ML algorithms, and cloud deployment. 
+                 Transforming ideas into intelligent solutions with cutting-edge AI, ML algorithms, and cloud deployment. 
                 Ready to revolutionize your business with data-driven innovation that delivers real results!
             </p>
             <div class="hero-buttons">
@@ -626,6 +626,10 @@
                 mobileMenu.classList.toggle('active');
             });
         }
+
+        document.querySelector('.loading-overlay').addEventListener('animationend', function() {
+            this.remove();
+        });
     </script>
 </body>
 </html>
