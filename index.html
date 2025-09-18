@@ -1,1 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokeswar Raju Gundlapalli - AI Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Initializing AI Portfolio...</div>
+    </div>
 
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-particles" id="particles"></div>
+        <canvas class="matrix-rain" id="matrix"></canvas>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Lokeswar Raju</div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- AI Brain Animation -->
+        <div class="ai-brain" id="aiBrain"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Lokeswar Raju Gundlapalli</h1>
+            <div class="ai-subtitle">AI Engineer & ML Expert</div>
+            <p class="hero-description">
+                🚀 Transforming ideas into intelligent solutions with cutting-edge AI, ML algorithms, and cloud deployment. 
+                Ready to revolutionize your business with data-driven innovation that delivers real results!
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-spectacular btn-primary-spec">
+                    <i class="fas fa-rocket"></i> Explore My AI Projects
+                </a>
+                <a href="#contact" class="btn-spectacular btn-secondary-spec">
+                    <i class="fas fa-handshake"></i> Let's Collaborate
+                </a>
+                <a href="mailto:glokesh8374@gmail.com" class="btn-spectacular btn-tertiary-spec">
+                    <i class="fas fa-paper-plane"></i> Hire Me Now
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Code Animation -->
+        <div class="floating-code">
+            <div class="code-line">import tensorflow as tf</div>
+            <div class="code-line">model = Sequential()</div>
+            <div class="code-line">accuracy = 0.95</div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-card-amazing">
+                <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="stat-number-amazing" data-count="75">0</div>
+                <div class="stat-label-amazing">% ML Model Accuracy</div>
+            </div>
+            <div class="stat-card-amazing">
+                <div class="stat-icon"><i class="fas fa-database"></i></div>
+                <div class="stat-number-amazing" data-count="10">0</div>
+                <div class="stat-label-amazing">K+ Data Points Processed</div>
+            </div>
+            <div class="stat-card-amazing">
+                <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="stat-number-amazing" data-count="5">0</div>
+                <div class="stat-label-amazing">+ AI Projects Deployed</div>
+            </div>
+            <div class="stat-card-amazing">
+                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="stat-number-amazing" data-count="100">0</div>
+                <div class="stat-label-amazing">% Client Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title-amazing">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <div class="about-card">
+                    <h3>🎯 Mission-Driven AI Engineer</h3>
+                    <p>I'm an experienced AI Engineer and Software Developer with a strong foundation in machine learning, data science, and software development. Currently serving as a Software Engineer at BigEBrains Pvt. Ltd., I bring expertise in Python programming, predictive modelling, and end-to-end application deployment.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🏆 Proven Track Record</h3>
+                    <p>My achievements include developing healthcare prediction systems with 75% accuracy, deploying scalable web applications with React.js and Django, and implementing cloud solutions using AWS, Docker, and CI/CD pipelines.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🤝 Team Leadership</h3>
+                    <p>I demonstrate strong collaborative abilities through cross-functional team leadership and Agile development practices, with experience in the complete software development lifecycle from development to production deployment.</p>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="profile-glow">
+                    <div class="profile-icon">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </div>
+                <div class="education-timeline">
+                    <h4>🎓 Education Excellence</h4>
+                    <div class="edu-item">
+                        <strong>B.Tech CSE</strong> - GVR&S College of Engineering<br>
+                        <span class="grade">7.8 CGPA</span>
+                    </div>
+                    <div class="edu-item">
+                        <strong>Intermediate</strong> - Sri Chaitanya Jr College<br>
+                        <span class="grade">75%</span>
+                    </div>
+                    <div class="edu-item">
+                        <strong>SSC</strong> - Sri P Gopi Reddy High School<br>
+                        <span class="grade">9.8 GPA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h2 class="section-title-amazing">Technical Arsenal</h2>
+        <div class="skills-container">
+            <div class="skill-card-floating">
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="skill-title">AI & Machine Learning</h3>
+                <div class="skill-tags-amazing">
+                    <span class="skill-tag-glow">TensorFlow</span>
+                    <span class="skill-tag-glow">PyTorch</span>
+                    <span class="skill-tag-glow">Scikit-learn</span>
+                    <span class="skill-tag-glow">Neural Networks</span>
+                    <span class="skill-tag-glow">Deep Learning</span>
+                    <span class="skill-tag-glow">Predictive Modeling</span>
+                    <span class="skill-tag-glow">Data Analysis</span>
+                </div>
+            </div>
+            <div class="skill-card-floating">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3 class="skill-title">Programming Languages</h3>
+                <div class="skill-tags-amazing">
+                    <span class="skill-tag-glow">Python</span>
+                    <span class="skill-tag-glow">JavaScript</span>
+                    <span class="skill-tag-glow">C</span>
+                    <span class="skill-tag-glow">HTML</span>
+                    <span class="skill-tag-glow">CSS</span>
+                    <span class="skill-tag-glow">SQL</span>
+                </div>
+            </div>
+            <div class="skill-card-floating">
+                <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                <h3 class="skill-title">Cloud & DevOps</h3>
+                <div class="skill-tags-amazing">
+                    <span class="skill-tag-glow">AWS EC2</span>
+                    <span class="skill-tag-glow">AWS S3</span>
+                    <span class="skill-tag-glow">Docker</span>
+                    <span class="skill-tag-glow">NGINX</span>
+                    <span class="skill-tag-glow">CI/CD</span>
+                    <span class="skill-tag-glow">GitHub Actions</span>
+                </div>
+            </div>
+            <div class="skill-card-floating">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3 class="skill-title">Data & Frameworks</h3>
+                <div class="skill-tags-amazing">
+                    <span class="skill-tag-glow">Pandas</span>
+                    <span class="skill-tag-glow">NumPy</span>
+                    <span class="skill-tag-glow">FastAPI</span>
+                    <span class="skill-tag-glow">Django</span>
+                    <span class="skill-tag-glow">React.js</span>
+                    <span class="skill-tag-glow">MySQL</span>
+                    <span class="skill-tag-glow">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <h2 class="section-title-amazing">Professional Journey</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-date">Feb 2025 - Present</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Software Engineer</h3>
+                    <p class="timeline-company">BigEBrains Pvt Ltd</p>
+                    <div class="timeline-description">
+                        <p>Leading AI-based project development and deployment in a dynamic startup environment. Combining technical proficiency in data science libraries with practical software engineering skills to deliver robust, scalable solutions.</p>
+                        <ul>
+                            <li>🚀 Developing cutting-edge AI solutions using modern ML frameworks</li>
+                            <li>☁️ Implementing cloud deployment strategies with AWS and Docker</li>
+                            <li>🔄 Managing CI/CD pipelines for automated deployments</li>
+                            <li>👥 Collaborating with cross-functional teams in Agile environment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <h2 class="section-title-amazing">Featured Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card-3d">
+                <div class="project-header">
+                    <h3 class="project-title-glow">🤖 AI-Powered Vendor Intelligence Platform</h3>
+                    <div class="project-date">Feb 2025 - June 2025</div>
+                </div>
+                <p class="project-client">Client: Acads360 | Full-Stack AI Development</p>
+                <div class="project-description">
+                    <p>Developed an intelligent B2B vendor research and comparison platform that automates vendor discovery, analysis, and selection using advanced AI technologies including LLMs, RAG systems, and multi-agent frameworks.</p>
+                </div>
+                <div class="project-features">
+                    <div class="feature">
+                        <i class="fas fa-spider"></i>
+                        <span>Intelligent Web Scraping with CrewAI orchestration</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Smart Vendor Ranking Algorithm with AI-powered analysis</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Document Intelligence & RAG System (PDF, Word, Excel, CSV)</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cloud"></i>
+                        <span>Production deployment with AWS EC2 & Docker</span>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <span class="tech-tag-neon">Python</span>
+                    <span class="tech-tag-neon">CrewAI</span>
+                    <span class="tech-tag-neon">RAG</span>
+                    <span class="tech-tag-neon">AWS</span>
+                    <span class="tech-tag-neon">Docker</span>
+                    <span class="tech-tag-neon">CI/CD</span>
+                </div>
+                <div class="project-stats">
+                    <div class="stat">10K+ Listings Processed</div>
+                    <div class="stat">Multi-format Support</div>
+                    <div class="stat">Real-time Analysis</div>
+                </div>
+            </div>
+
+            <div class="project-card-3d">
+                <div class="project-header">
+                    <h3 class="project-title-glow">🌐 Production Website Deployment</h3>
+                    <div class="project-date">2025 - Present</div>
+                </div>
+                <p class="project-client">BigEBrains Pvt. Ltd. | DevOps Engineering</p>
+                <div class="project-description">
+                    <p>Led complete deployment of two production websites implementing modern DevOps practices and cloud infrastructure for scalable, secure web applications.</p>
+                </div>
+                <div class="project-features">
+                    <div class="feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>bigclasses.ai - AI-focused educational platform</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-building"></i>
+                        <span>bigebrains.com - Corporate website and business portal</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-layer-group"></i>
+                        <span>React.js frontend with Django backend architecture</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Scalable, secure production environment</span>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <span class="tech-tag-neon">React.js</span>
+                    <span class="tech-tag-neon">Django</span>
+                    <span class="tech-tag-neon">AWS</span>
+                    <span class="tech-tag-neon">DevOps</span>
+                    <span class="tech-tag-neon">NGINX</span>
+                </div>
+                <div class="project-stats">
+                    <div class="stat">2 Live Websites</div>
+                    <div class="stat">Modern Architecture</div>
+                    <div class="stat">High Performance</div>
+                </div>
+            </div>
+
+            <div class="project-card-3d">
+                <div class="project-header">
+                    <h3 class="project-title-glow">🏥 Liver Disease Prediction System</h3>
+                    <div class="project-date">Academic Leadership Project</div>
+                </div>
+                <p class="project-client">Healthcare ML Project</p>
+                <div class="project-description">
+                    <p>Led team development of healthcare prediction system achieving 75% accuracy using logistic regression with comprehensive data visualization dashboard.</p>
+                </div>
+                <div class="project-features">
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Team leadership and project management</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-brain"></i>
+                        <span>Machine Learning model implementation</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Comprehensive data visualization dashboard</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Healthcare domain expertise application</span>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <span class="tech-tag-neon">Python</span>
+                    <span class="tech-tag-neon">Scikit-learn</span>
+                    <span class="tech-tag-neon">Pandas</span>
+                    <span class="tech-tag-neon">Data Viz</span>
+                    <span class="tech-tag-neon">Healthcare ML</span>
+                </div>
+                <div class="project-stats">
+                    <div class="stat">75% Accuracy</div>
+                    <div class="stat">Team Leadership</div>
+                    <div class="stat">Healthcare Impact</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2 class="section-title-amazing">Let's Build The Future Together</h2>
+        <div class="contact-container">
+            <div class="contact-card-hologram">
+                <h3>Ready to Hire? Let's Connect! 🚀</h3>
+                <p>I'm excited to bring my AI expertise to your team and create groundbreaking solutions that drive real business results. Let's discuss how I can contribute to your company's success!</p>
+                
+                <div class="contact-info-grid">
+                    <div class="contact-item-glow">
+                        <div class="contact-icon-amazing"><i class="fas fa-envelope"></i></div>
+                        <h4>Email</h4>
+                        <a href="mailto:glokesh8374@gmail.com">glokesh8374@gmail.com</a>
+                    </div>
+                    <div class="contact-item-glow">
+                        <div class="contact-icon-amazing"><i class="fas fa-phone"></i></div>
+                        <h4>Phone</h4>
+                        <a href="tel:+918374705188">+91 8374705188</a>
+                    </div>
+                    <div class="contact-item-glow">
+                        <div class="contact-icon-amazing"><i class="fab fa-linkedin"></i></div>
+                        <h4>LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/lokesh-raju-58863022a" target="_blank">Connect Professional</a>
+                    </div>
+                    <div class="contact-item-glow">
+                        <div class="contact-icon-amazing"><i class="fab fa-github"></i></div>
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/GundlapalliLokeswarRaju" target="_blank">View My Code</a>
+                    </div>
+                </div>
+
+                <div class="hire-me-section">
+                    <h4>Why Choose Me?</h4>
+                    <div class="benefits-grid">
+                        <div class="benefit">
+                            <i class="fas fa-rocket"></i>
+                            <span>Immediate Impact</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Innovative Solutions</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-handshake"></i>
+                            <span>Team Player</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-clock"></i>
+                            <span>Fast Learner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/lokesh-raju-58863022a" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/GundlapalliLokeswarRaju" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:glokesh8374@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Lokeswar Raju Gundlapalli. Crafted with ❤️ and AI</p>
+        <p class="footer-tagline">Ready to transform your business with AI? Let's make it happen! 🚀</p>
+    </footer>
+
+    <script>
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAnimations();
+            initializeParticles();
+            initializeMatrixRain();
+            initializeCounters();
+            initializeAIBrain();
+            initializeSmoothScrolling();
+            initializeHeaderAnimation();
+        });
+
+        // Smooth scrolling for navigation
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Header animation on scroll
+        function initializeHeaderAnimation() {
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(10, 14, 39, 0.98)';
+                    header.style.boxShadow = '0 5px 30px rgba(0, 212, 255, 0.1)';
+                } else {
+                    header.style.background = 'rgba(10, 14, 39, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        // Initialize floating particles
+        function initializeParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Matrix rain effect
+        function initializeMatrixRain() {
+            const canvas = document.getElementById('matrix');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+            const matrixArray = matrix.split("");
+            
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            
+            const drops = [];
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 14, 39, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 35);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Counter animation
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.stat-number-amazing[data-count]');
+            
+            const animateCounter = (counter) => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 20);
+            };
+            
+            // Intersection Observer for counter animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // AI Brain animation
+        function initializeAIBrain() {
+            const brain = document.getElementById('aiBrain');
+            if (!brain) return;
+            
+            // Create brain nodes and connections
+            for (let i = 0; i < 12; i++) {
+                const node = document.createElement('div');
+                node.className = 'brain-node';
+                node.style.left = Math.random() * 80 + 10 + '%';
+                node.style.top = Math.random() * 80 + 10 + '%';
+                node.style.animationDelay = Math.random() * 2 + 's';
+                brain.appendChild(node);
+                
+                if (i > 0) {
+                    const connection = document.createElement('div');
+                    connection.className = 'brain-connection';
+                    connection.style.width = Math.random() * 100 + 50 + 'px';
+                    connection.style.left = Math.random() * 70 + 15 + '%';
+                    connection.style.top = Math.random() * 70 + 15 + '%';
+                    connection.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    connection.style.animationDelay = Math.random() * 3 + 's';
+                    brain.appendChild(connection);
+                }
+            }
+        }
+
+        // General animations initialization
+        function initializeAnimations() {
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'all 0.8s ease-out';
+                observer.observe(section);
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
