@@ -24,18 +24,19 @@
     <header>
         <nav>
             <div class="logo">Lokeswar Raju</div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
                 <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
                 <li><a href="#projects"><i class="fas fa-laptop-code"></i> Projects</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-            <div class="mobile-menu">
+            <button class="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </nav>
     </header>
 
@@ -105,11 +106,11 @@
             <div class="about-text">
                 <div class="about-card">
                     <h3>🎯 Mission-Driven AI Engineer</h3>
-                    <p>I'm an experienced AI Engineer and Software Developer with a strong foundation in machine learning, data science, and software development. Currently serving as a Software Engineer at BigEBrains Pvt. Ltd., I bring expertise in Python programming, predictive modelling, and end-to-end application deployment.</p>
+                    <p>I'm an experienced AI Engineer and Software Developer with a strong foundation in machine learning, data science, and software development. Currently an AI Engineer at Brolly Software Solutions Pvt. Ltd., following a freelance stint delivering production AI automation and a software engineering role at BigEBrains Pvt. Ltd., I bring expertise in Python programming, LLM and voice systems, and end-to-end application deployment.</p>
                 </div>
                 <div class="about-card">
                     <h3>🏆 Proven Track Record</h3>
-                    <p>My achievements include developing healthcare prediction systems with good accuracy, deploying scalable web applications with React.js and Django, and implementing cloud solutions using AWS, Docker, and CI/CD pipelines.</p>
+                    <p>My achievements include building a real-time Telugu-first AI voice agent with RAG-grounded answers, shipping a call analytics pipeline that processes 20,000+ recordings a month, developing healthcare prediction systems, and implementing cloud solutions using AWS, Docker, and CI/CD pipelines.</p>
                 </div>
                 <div class="about-card">
                     <h3>🤝 Team Leadership</h3>
@@ -156,6 +157,12 @@
                     <span class="skill-tag-glow">Deep Learning</span>
                     <span class="skill-tag-glow">Predictive Modeling</span>
                     <span class="skill-tag-glow">Data Analysis</span>
+                    <span class="skill-tag-glow">LLMs</span>
+                    <span class="skill-tag-glow">RAG</span>
+                    <span class="skill-tag-glow">NLP</span>
+                    <span class="skill-tag-glow">Whisper</span>
+                    <span class="skill-tag-glow">Ollama</span>
+                    <span class="skill-tag-glow">OpenAI Realtime API</span>
                 </div>
             </div>
             <div class="skill-card-floating">
@@ -203,17 +210,49 @@
         <h2 class="section-title-amazing">Professional Journey</h2>
         <div class="timeline-container">
             <div class="timeline-item">
-                <div class="timeline-date">Feb 2025 - Present</div>
+                <div class="timeline-date">Mar 2026 - Present</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">AI Engineer</h3>
+                    <p class="timeline-company">Brolly Software Solutions Pvt Ltd</p>
+                    <div class="timeline-description">
+                        <p>Building real-time conversational AI systems for regional-language learners, with an emphasis on low-latency voice pipelines, retrieval-grounded answers, and production hardening.</p>
+                        <ul>
+                            <li>🎙️ Architecting VoxFlow, a Telugu-first AI voice agent on FastAPI and the OpenAI Realtime API</li>
+                            <li>📚 Engineering RAG pipelines over course material so answers are grounded in real documents</li>
+                            <li>🔊 Designing full-duplex audio with VAD, noise reduction, and WebRTC/telephony bridges</li>
+                            <li>🛡️ Hardening for production: auth, rate limiting, security headers, 90% test coverage, Docker + CI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Sep 2025 - Mar 2026</div>
+                <div class="timeline-content">
+                    <h3 class="timeline-title">Freelance AI/ML Engineer</h3>
+                    <p class="timeline-company">Independent Consultant</p>
+                    <div class="timeline-description">
+                        <p>Delivered production AI automation for clients as an independent engineer, owning projects end to end from problem framing through deployment and ongoing support.</p>
+                        <ul>
+                            <li>🏨 Built a voice analytics and sentiment pipeline for luxury hotel groups via Skillkoder</li>
+                            <li>🗣️ Automated transcription of 700+ customer service calls per day with Whisper (Large)</li>
+                            <li>📉 Reduced manual call monitoring effort by ~90% through LLM-based conversation analysis</li>
+                            <li>💼 Shipped it as a subscription-based AI product with recurring revenue</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Feb 2025 - Sep 2025</div>
                 <div class="timeline-content">
                     <h3 class="timeline-title">Software Engineer</h3>
                     <p class="timeline-company">BigEBrains Pvt Ltd</p>
                     <div class="timeline-description">
-                        <p>Leading AI-based project development and deployment in a dynamic startup environment. Combining technical proficiency in data science libraries with practical software engineering skills to deliver robust, scalable solutions.</p>
+                        <p>Led AI-based project development and deployment in a dynamic startup environment. Combined technical proficiency in data science libraries with practical software engineering skills to deliver robust, scalable solutions.</p>
                         <ul>
-                            <li>🚀 Developing cutting-edge AI solutions using modern ML frameworks</li>
-                            <li>☁️ Implementing cloud deployment strategies with AWS and Docker</li>
-                            <li>🔄 Managing CI/CD pipelines for automated deployments</li>
-                            <li>👥 Collaborating with cross-functional teams in Agile environment</li>
+                            <li>🚀 Developed cutting-edge AI solutions using modern ML frameworks</li>
+                            <li>☁️ Implemented cloud deployment strategies with AWS and Docker</li>
+                            <li>🔄 Managed CI/CD pipelines for automated deployments</li>
+                            <li>👥 Collaborated with cross-functional teams in Agile environment</li>
                         </ul>
                     </div>
                 </div>
@@ -225,7 +264,94 @@
     <section id="projects" class="projects-section">
         <h2 class="section-title-amazing">Featured Projects</h2>
         <div class="projects-grid">
-            
+
+            <div class="project-card-3d">
+                <div class="project-header">
+                    <h3 class="project-title-glow">🎙️ VoxFlow — Telugu-First AI Voice Agent</h3>
+                    <div class="project-date">Apr 2026 - Present</div>
+                </div>
+                <p class="project-client">Brolly Software Solutions Pvt Ltd | Real-Time Conversational AI</p>
+                <div class="project-description">
+                    <p>Built a real-time, low-latency AI voice tutor that answers digital-marketing questions in conversational Telugu/Tenglish over both the browser (WebRTC) and phone calls (Plivo telephony bridge), removing the English-only barrier for regional learners.</p>
+                </div>
+                <div class="project-features">
+                    <div class="feature">
+                        <i class="fas fa-book-open"></i>
+                        <span>RAG pipeline over PDF/DOCX/TXT course material with cached, change-detecting index</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-wave-square"></i>
+                        <span>Full-duplex audio: FFT-based VAD, adaptive noise reduction, pipelined TTS, μ-law passthrough</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-cubes"></i>
+                        <span>Modular FastAPI backend (~26 modules) with a pluggable OpenAI/Groq provider layer</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <span>Production hardening: fail-closed auth, per-IP rate limiting, CSP/HSTS middleware</span>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <span class="tech-tag-neon">Python</span>
+                    <span class="tech-tag-neon">FastAPI</span>
+                    <span class="tech-tag-neon">OpenAI Realtime API</span>
+                    <span class="tech-tag-neon">WebRTC</span>
+                    <span class="tech-tag-neon">RAG</span>
+                    <span class="tech-tag-neon">Plivo</span>
+                    <span class="tech-tag-neon">Docker</span>
+                    <span class="tech-tag-neon">GitHub Actions</span>
+                </div>
+                <div class="project-stats">
+                    <div class="stat">152 Tests @ 90% Coverage</div>
+                    <div class="stat">Browser + Phone Calls</div>
+                    <div class="stat">Grounded, Not Hallucinated</div>
+                </div>
+            </div>
+
+            <div class="project-card-3d">
+                <div class="project-header">
+                    <h3 class="project-title-glow">📞 AI Automation — Voice Analytics & Sentiment Analysis</h3>
+                    <div class="project-date">Nov 2025 - Mar 2026</div>
+                </div>
+                <p class="project-client">Freelance via Skillkoder | Hospitality (Green Park, Avasa, Mari Gold Hotels) | AI/ML Engineer</p>
+                <div class="project-description">
+                    <p>Built a production-grade AI automation pipeline analyzing 700+ customer service calls per day across multiple luxury hotels, delivered as a subscription-based AI product with recurring revenue.</p>
+                </div>
+                <div class="project-features">
+                    <div class="feature">
+                        <i class="fas fa-microphone"></i>
+                        <span>100% of call transcription automated with Whisper (Large) for multilingual audio</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-comments"></i>
+                        <span>LLM sentiment analysis via Ollama: Positive, Negative, Neutral, Rude, Standard</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-check"></i>
+                        <span>Greeting-phrase detection to monitor employee professionalism and consistency</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Actionable insights driving customer experience and service quality improvements</span>
+                    </div>
+                </div>
+                <div class="project-tech-tags">
+                    <span class="tech-tag-neon">Python</span>
+                    <span class="tech-tag-neon">Whisper (Large)</span>
+                    <span class="tech-tag-neon">Ollama</span>
+                    <span class="tech-tag-neon">NLP</span>
+                    <span class="tech-tag-neon">Sentiment Analysis</span>
+                    <span class="tech-tag-neon">Audio Processing</span>
+                    <span class="tech-tag-neon">Linux</span>
+                </div>
+                <div class="project-stats">
+                    <div class="stat">700+ Calls/Day</div>
+                    <div class="stat">20,000+ Recordings/Month</div>
+                    <div class="stat">~90% Less Manual Effort</div>
+                </div>
+            </div>
+
             <div class="project-card-3d">
                 <div class="project-header">
                     <h3 class="project-title-glow">🤖 AI-Powered Vendor Intelligence Platform</h3>
@@ -271,7 +397,7 @@
             <div class="project-card-3d">
                 <div class="project-header">
                     <h3 class="project-title-glow">🌐 Production Website Deployment</h3>
-                    <div class="project-date">2025 - Present</div>
+                    <div class="project-date">2025</div>
                 </div>
                 <p class="project-client">BigEBrains Pvt. Ltd. | DevOps Engineering</p>
                 <div class="project-description">
@@ -422,7 +548,7 @@
                     <div class="contact-item-glow">
                         <div class="contact-icon-amazing"><i class="fab fa-linkedin"></i></div>
                         <h4>LinkedIn</h4>
-                        <a href="https://www.linkedin.com/in/lokesh-raju-58863022a" target="_blank">Connect Professional</a>
+                        <a href="https://www.linkedin.com/in/lokeswar-raju-gundlapalli-58863022a/" target="_blank">Connect Professional</a>
                     </div>
                     <div class="contact-item-glow">
                         <div class="contact-icon-amazing"><i class="fab fa-github"></i></div>
@@ -458,8 +584,9 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-inner">
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/lokesh-raju-58863022a" target="_blank">
+            <a href="https://www.linkedin.com/in/lokeswar-raju-gundlapalli-58863022a/" target="_blank">
                 <i class="fab fa-linkedin"></i>
             </a>
             <a href="https://github.com/GundlapalliLokeswarRaju" target="_blank">
@@ -469,36 +596,63 @@
                 <i class="fas fa-envelope"></i>
             </a>
         </div>
-        <p>&copy; 2025 Lokeswar Raju Gundlapalli. Crafted with ❤️ and AI</p>
+        <p>&copy; 2026 Lokeswar Raju Gundlapalli. Crafted with ❤️ and AI</p>
         <p class="footer-tagline">Ready to transform your business with AI? Let's make it happen! 🚀</p>
+        </div>
     </footer>
 
     <script>
-        // Initialize everything when page loads
+        // Honour the OS "reduce motion" setting for JS-driven effects too.
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         document.addEventListener('DOMContentLoaded', function() {
             initializeAnimations();
-            initializeParticles();
-            initializeMatrixRain();
             initializeCounters();
-            initializeAIBrain();
             initializeSmoothScrolling();
             initializeHeaderAnimation();
+            initializeMobileMenu();
+            trackHeaderHeight();
+
+            if (!reduceMotion) {
+                initializeParticles();
+                initializeMatrixRain();
+                initializeAIBrain();
+            }
         });
 
-        // Smooth scrolling for navigation
+        // Smooth scrolling for navigation; closes the mobile drawer on tap.
         function initializeSmoothScrolling() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                    if (!target) return;
+                    e.preventDefault();
+                    closeMobileMenu();
+                    target.scrollIntoView({
+                        behavior: reduceMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
                 });
             });
+        }
+
+        // Feed the real header height back into CSS so section scroll offsets
+        // stay correct even if the nav wraps to two lines on an odd width.
+        function trackHeaderHeight() {
+            const header = document.querySelector('header');
+            if (!header) return;
+
+            const apply = () => {
+                const h = header.getBoundingClientRect().height;
+                if (h) document.documentElement.style.setProperty('--header-h', h + 'px');
+            };
+
+            apply();
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(apply).observe(header);
+            } else {
+                window.addEventListener('resize', apply);
+            }
         }
 
         // Header animation on scroll
@@ -535,22 +689,24 @@
         // Matrix rain effect
         function initializeMatrixRain() {
             const canvas = document.getElementById('matrix');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
-            
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
+
             const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
             const matrixArray = matrix.split("");
-            
             const fontSize = 10;
-            const columns = canvas.width / fontSize;
-            
-            const drops = [];
-            for (let x = 0; x < columns; x++) {
-                drops[x] = 1;
+            let drops = [];
+
+            // Rebuild the column set whenever the canvas resizes, so a wider
+            // window fills with rain instead of leaving a bare strip.
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                const columns = Math.ceil(canvas.width / fontSize);
+                drops = new Array(columns).fill(1);
             }
-            
+            resize();
+
             function draw() {
                 ctx.fillStyle = 'rgba(10, 14, 39, 0.04)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -570,10 +726,11 @@
             }
             
             setInterval(draw, 35);
-            
+
+            let resizeTimer;
             window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(resize, 150);
             });
         }
 
@@ -636,47 +793,67 @@
             }
         }
 
-        // General animations initialization
+        // Scroll-reveal for sections. Sections are only hidden once we know the
+        // observer can reveal them again, so no-JS and reduced-motion users
+        // still see everything.
         function initializeAnimations() {
-            // Intersection Observer for fade-in animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
+            if (reduceMotion || !('IntersectionObserver' in window)) return;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
                         entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
-            
-            // Observe sections
+            }, {
+                threshold: 0.05,
+                rootMargin: '0px 0px -80px 0px'
+            });
+
             document.querySelectorAll('section').forEach(section => {
                 section.style.opacity = '0';
-                section.style.transform = 'translateY(50px)';
-                section.style.transition = 'all 0.8s ease-out';
+                section.style.transform = 'translateY(40px)';
+                section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
                 observer.observe(section);
             });
         }
 
         // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        if (mobileMenu) {
+        function closeMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (!mobileMenu || !navLinks) return;
+            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileMenu.setAttribute('aria-expanded', 'false');
+        }
+
+        function initializeMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            if (!mobileMenu || !navLinks) return;
+
             mobileMenu.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
+                const isOpen = navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active', isOpen);
+                mobileMenu.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            // A drawer left open while the layout widens back to the desktop
+            // nav would otherwise stay flagged as active.
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 860) closeMobileMenu();
             });
         }
 
-        document.querySelector('.loading-overlay').addEventListener('animationend', function() {
-            this.remove();
-        });
+        // The loading overlay markup is commented out; guard so this never throws.
+        const loadingOverlay = document.querySelector('.loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.addEventListener('animationend', function() {
+                this.remove();
+            });
+        }
     </script>
 </body>
 </html>
