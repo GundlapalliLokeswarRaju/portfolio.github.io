@@ -659,11 +659,11 @@
             window.addEventListener('scroll', () => {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
-                    header.style.background = 'rgba(10, 14, 39, 0.98)';
-                    header.style.boxShadow = '0 5px 30px rgba(0, 212, 255, 0.1)';
+                    header.style.background = 'rgba(255, 255, 255, 0.72)';
+                    header.style.boxShadow = '0 6px 28px rgba(122, 96, 61, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.85)';
                 } else {
-                    header.style.background = 'rgba(10, 14, 39, 0.95)';
-                    header.style.boxShadow = 'none';
+                    header.style.background = 'rgba(255, 255, 255, 0.5)';
+                    header.style.boxShadow = 'inset 0 1px 0 rgba(255, 255, 255, 0.85)';
                 }
             });
         }
@@ -707,10 +707,12 @@
             resize();
 
             function draw() {
-                ctx.fillStyle = 'rgba(10, 14, 39, 0.04)';
+                // Cream trail fade + teal glyphs: the rain now recedes into the
+                // light background instead of smearing navy over it.
+                ctx.fillStyle = 'rgba(247, 240, 227, 0.04)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = 'rgba(0, 212, 255, 0.8)';
+
+                ctx.fillStyle = 'rgba(11, 114, 133, 0.85)';
                 ctx.font = fontSize + 'px monospace';
                 
                 for (let i = 0; i < drops.length; i++) {
