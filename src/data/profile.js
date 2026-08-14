@@ -20,29 +20,32 @@ export const contact = {
   github: 'https://github.com/GundlapalliLokeswarRaju',
 };
 
+/* Route table. `to` feeds React Router directly, so this is the single place
+   that decides both the nav order and which URLs exist. */
 export const navLinks = [
-  { href: '#home', label: 'Home', icon: 'fas fa-home' },
-  { href: '#about', label: 'About', icon: 'fas fa-user' },
-  { href: '#skills', label: 'Skills', icon: 'fas fa-cogs' },
-  { href: '#experience', label: 'Experience', icon: 'fas fa-briefcase' },
-  { href: '#projects', label: 'Projects', icon: 'fas fa-laptop-code' },
-  { href: '#contact', label: 'Contact', icon: 'fas fa-envelope' },
+  { to: '/', label: 'Home', icon: 'fas fa-home' },
+  { to: '/about', label: 'About', icon: 'fas fa-user' },
+  { to: '/skills', label: 'Skills', icon: 'fas fa-cogs' },
+  { to: '/experience', label: 'Experience', icon: 'fas fa-briefcase' },
+  { to: '/projects', label: 'Projects', icon: 'fas fa-laptop-code' },
+  { to: '/contact', label: 'Contact', icon: 'fas fa-envelope' },
 ];
 
 export const heroButtons = [
   {
-    href: '#projects',
+    to: '/projects',
     label: 'Explore My AI Projects',
     icon: 'fas fa-rocket',
     variant: 'btn-primary-spec',
   },
   {
-    href: '#contact',
+    to: '/contact',
     label: "Let's Collaborate",
     icon: 'fas fa-handshake',
     variant: 'btn-secondary-spec',
   },
   {
+    // Off-site, so a plain anchor rather than a router link.
     href: `mailto:${contact.email}`,
     label: 'Hire Me Now',
     icon: 'fas fa-paper-plane',

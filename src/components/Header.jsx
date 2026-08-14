@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { navLinks, profile } from '../data/profile.js';
 import { useHeaderHeight } from '../hooks/useHeaderHeight.js';
 import { useScrolled } from '../hooks/useScrolled.js';
-import { useSmoothScroll } from '../hooks/useSmoothScroll.js';
 
 const DESKTOP_NAV_WIDTH = 860; // must match the breakpoint in Header.css
 
@@ -10,9 +10,13 @@ export default function Header() {
   const headerRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const scrolled = useScrolled(100);
-  const smoothScroll = useSmoothScroll();
+  const { pathname } = useLocation();
 
   useHeaderHeight(headerRef);
+
+  /* Close the drawer whenever the route changes — including via back/forward,
+     which no click handler would catch. */
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   /* A drawer left open while the layout widens back to the desktop nav would
      otherwise stay flagged as active. */
@@ -27,24 +31,25 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize);
   }, [menuOpen]);
 
-  const handleNavClick = (event, href) => {
-    setMenuOpen(false);
-    smoothScroll(event, href);
-  };
-
   return (
     <header ref={headerRef} className={scrolled ? 'scrolled' : undefined}>
       <nav>
-        <a className="logo" href="#home" onClick={(event) => handleNavClick(event, '#home')}>
+        <NavLink className="logo" to="/">
           {profile.shortName}
-        </a>
+        </NavLink>
 
         <ul className={`nav-links${menuOpen ? ' active' : ''}`} id="navLinks">
-          {navLinks.map(({ href, label, icon }) => (
-            <li key={href}>
-              <a href={href} onClick={(event) => handleNavClick(event, href)}>
+          {navLinks.map(({ to, label, icon }) => (
+            <li key={to}>
+              {/* `end` on the index route only — without it "/" would match
+                  every path and Home would always look active. */}
+              <NavLink
+                to={to}
+                end={to === '/'}
+                className={({ isActive }) => (isActive ? 'active' : undefined)}
+              >
                 <i className={icon} aria-hidden="true" /> {label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>

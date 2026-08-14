@@ -1,8 +1,8 @@
 import { Fragment, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import photo from '../assets/lokesh.jpeg';
 import { floatingCode, heroButtons, profile } from '../data/profile.js';
 import { useReducedMotion } from '../hooks/useReducedMotion.js';
-import { useSmoothScroll } from '../hooks/useSmoothScroll.js';
 import Section from './Section.jsx';
 
 const NODE_COUNT = 12;
@@ -51,7 +51,6 @@ function AiBrain() {
 
 export default function Hero() {
   const reduced = useReducedMotion();
-  const smoothScroll = useSmoothScroll();
 
   return (
     <Section id="home" className="hero">
@@ -64,16 +63,25 @@ export default function Hero() {
         <p className="hero-description">{profile.heroDescription}</p>
 
         <div className="hero-buttons">
-          {heroButtons.map(({ href, label, icon, variant }) => (
-            <a
-              key={label}
-              href={href}
-              className={`btn-spectacular ${variant}`}
-              onClick={(event) => smoothScroll(event, href)}
-            >
-              <i className={icon} aria-hidden="true" /> {label}
-            </a>
-          ))}
+          {heroButtons.map(({ to, href, label, icon, variant }) => {
+            const content = (
+              <>
+                <i className={icon} aria-hidden="true" /> {label}
+              </>
+            );
+            const className = `btn-spectacular ${variant}`;
+
+            // `to` is an in-app route, `href` is off-site (mailto:).
+            return to ? (
+              <Link key={label} to={to} className={className}>
+                {content}
+              </Link>
+            ) : (
+              <a key={label} href={href} className={className}>
+                {content}
+              </a>
+            );
+          })}
         </div>
       </div>
 

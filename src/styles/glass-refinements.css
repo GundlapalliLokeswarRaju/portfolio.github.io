@@ -7,6 +7,94 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   0. Heavier frost
+   --------------------------------------------------------------------------
+   Deliberately first in this file: the small-screen override further down has
+   to win over these, and between two :root rules of equal specificity source
+   order is what decides.
+
+   Blur radius alone reads as "slightly out of focus". What makes a surface
+   look like *glass* is a wider blur paired with a saturation boost — so colour
+   behind the pane stays alive instead of washing to grey — plus a lit edge
+   where the sheet catches light. All three go up together. */
+:root {
+    --glass-blur: blur(24px) saturate(185%);
+    --glass-blur-sm: blur(14px) saturate(165%);
+
+    /* Top edge catches light, bottom edge picks up a faint bounce. This is
+       what gives a pane thickness rather than looking like flat tint. */
+    --glass-edge:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+
+    --glass-shadow: 0 10px 36px rgba(122, 96, 61, 0.13), var(--glass-edge);
+    --glass-shadow-lift: 0 22px 52px rgba(122, 96, 61, 0.2), var(--glass-edge);
+}
+
+/* --------------------------------------------------------------------------
+   0b. Colour for the frost to work with
+   --------------------------------------------------------------------------
+   Frosted glass is only convincing over something worth blurring. The aurora
+   gradient is fixed in place; these blobs actually travel, so panes shift hue
+   as you scroll past them instead of sitting on one static wash. */
+.glass-blobs {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.glass-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    will-change: transform;
+}
+
+.glass-blob-1 {
+    width: 42vmax;
+    height: 42vmax;
+    top: -8%;
+    left: -6%;
+    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.5), transparent 68%);
+    animation: blobDrift1 34s ease-in-out infinite alternate;
+}
+
+.glass-blob-2 {
+    width: 36vmax;
+    height: 36vmax;
+    top: 32%;
+    right: -8%;
+    background: radial-gradient(circle, rgba(var(--accent2-rgb), 0.42), transparent 68%);
+    animation: blobDrift2 41s ease-in-out infinite alternate;
+}
+
+.glass-blob-3 {
+    width: 40vmax;
+    height: 40vmax;
+    bottom: -12%;
+    left: 22%;
+    background: radial-gradient(circle, rgba(var(--accent3-rgb), 0.46), transparent 68%);
+    animation: blobDrift3 37s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(12vw, 8vh, 0) scale(1.18); }
+}
+
+@keyframes blobDrift2 {
+    from { transform: translate3d(0, 0, 0) scale(1.12); }
+    to   { transform: translate3d(-14vw, 10vh, 0) scale(1); }
+}
+
+@keyframes blobDrift3 {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(10vw, -12vh, 0) scale(1.22); }
+}
+
+/* --------------------------------------------------------------------------
    1. Nested glass — inner panes stop re-blurring
    --------------------------------------------------------------------------
    .skill-tag-glow and .contact-item-glow sit inside .skill-card-floating and

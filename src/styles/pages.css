@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Multi-page layout
+   --------------------------------------------------------------------------
+   Each route renders one section (Home renders two). With a single scrolling
+   page the header only ever overlapped the hero, which padded itself. Now
+   every page starts at the top under a fixed header, so the padding moves to
+   the shared wrapper.
+   ========================================================================== */
+
+.page {
+    padding-top: var(--header-h);
+
+    /* Keeps a short page (404, Contact on a tall screen) from leaving the
+       footer stranded mid-viewport. */
+    min-height: 100vh;
+    min-height: 100svh;
+}
+
+/* The hero already pads itself and sizes to the viewport. Now that .page
+   supplies the header offset, subtract it here so hero + offset still comes to
+   exactly one screen instead of overflowing by the header's height. */
+.page .hero {
+    padding-top: var(--space-lg);
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+}
+
+/* --------------------------------------------------------------------------
+   Active nav link
+   --------------------------------------------------------------------------
+   With separate pages the nav has to say where you are. A filled glass pill
+   plus the underline the hover state already uses — same visual language,
+   just latched on. */
+.nav-links a.active {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: var(--glass-edge), 0 2px 10px rgba(var(--accent-rgb), 0.14);
+    font-weight: 600;
+}
+
+.nav-links a.active::before {
+    width: 80%;
+}
+
+/* --------------------------------------------------------------------------
+   Skills grid on its own page
+   --------------------------------------------------------------------------
+   The 320px track fitted three columns at desktop width, which left the fourth
+   card alone next to a large void. Inline on a long scrolling page that barely
+   registered; on a dedicated page it is the whole view. A wider minimum caps
+   it at two columns, so four cards land as a balanced 2x2 and each card gets
+   room for its tags. */
+.skills-container {
+    grid-template-columns: repeat(auto-fit, minmax(min(430px, 100%), 1fr));
+}
+
+/* --------------------------------------------------------------------------
+   404
+   -------------------------------------------------------------------------- */
+
+.notfound-section {
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+.notfound-card {
+    background: var(--glass);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--glass-shadow);
+    padding: var(--space-xl);
+    max-width: 32rem;
+    margin-inline: auto;
+    display: grid;
+    gap: var(--space-md);
+    justify-items: center;
+}
+
+.notfound-code {
+    font-size: clamp(3.5rem, 2rem + 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1;
+    background: var(--gradient-title);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+.notfound-card p {
+    color: var(--text-light);
+}

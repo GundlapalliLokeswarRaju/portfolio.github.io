@@ -27,6 +27,9 @@
 @import '../components/Contact.css';
 @import '../components/Footer.css';
 
+/* Multi-page layout: header offset, active nav state, 404 */
+@import './pages.css';
+
 /* Glassmorphism refinements layered on top of the ported baseline.
    Deliberately BEFORE utilities.css: the @supports fallback there rewrites the
    glass surfaces for browsers without backdrop-filter, and it has to win over

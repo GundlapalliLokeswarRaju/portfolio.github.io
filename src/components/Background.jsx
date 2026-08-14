@@ -90,6 +90,16 @@ export default function Background() {
 
   return (
     <div className="bg-animation" aria-hidden="true">
+      {/* Drifting colour for the frosted panes to blur. Inside .bg-animation
+          so the reduced-motion and print rules that hide it cover these too. */}
+      {!reduced && (
+        <div className="glass-blobs">
+          <div className="glass-blob glass-blob-1" />
+          <div className="glass-blob glass-blob-2" />
+          <div className="glass-blob glass-blob-3" />
+        </div>
+      )}
+
       <div className="floating-particles">
         {particles.map(({ id, ...style }) => (
           <div key={id} className="particle" style={style} />
