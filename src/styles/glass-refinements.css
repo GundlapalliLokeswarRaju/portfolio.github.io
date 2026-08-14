@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Glassmorphism refinements
+   --------------------------------------------------------------------------
+   Layered on top of the ported baseline rather than edited into it, so the
+   original look stays readable in the component files and every deliberate
+   change is visible in one place.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Nested glass — inner panes stop re-blurring
+   --------------------------------------------------------------------------
+   .skill-tag-glow and .contact-item-glow sit inside .skill-card-floating and
+   .contact-card-hologram, which are already frosted. Blurring an
+   already-blurred backdrop doesn't add frost — it re-samples a flat, saturated
+   image, so hue drains out and the inner pane reads grey instead of glass. It
+   also costs a second full-surface GPU pass per element, and the skills grid
+   alone has ~30 tags.
+
+   A thin sheet resting on a frosted pane is a tint plus a lit top edge, not
+   more blur. Opacity is raised slightly to keep the same contrast against the
+   parent now that the blur is gone.
+
+   (.stat-card-amazing::after keeps its blur on purpose: `isolation: isolate`
+   on the card makes it blur the rotating conic gradient underneath, which is
+   the effect, not a nested accident.) */
+.skill-tag-glow,
+.contact-item-glow {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.skill-tag-glow {
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 2px 8px rgba(122, 96, 61, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.contact-item-glow {
+    background: rgba(255, 255, 255, 0.66);
+}
+
+/* --------------------------------------------------------------------------
+   2. Hover depth
+   --------------------------------------------------------------------------
+   The cards already lift and deepen their shadow. What was missing is the rim:
+   a raised pane catches more light along its top edge, and without that the
+   lift reads as the card sliding rather than rising.
+
+   Only the timing function is overridden, not the property lists — each card
+   keeps whatever it animates. The curve decelerates hard at the end so the
+   card settles instead of drifting. */
+.about-card,
+.skill-card-floating,
+.project-card-3d,
+.timeline-item,
+.stat-card-amazing,
+.contact-item-glow {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-duration: 0.35s;
+}
+
+.about-card:hover,
+.skill-card-floating:hover,
+.project-card-3d:hover,
+.timeline-item:hover,
+.stat-card-amazing:hover,
+.contact-item-glow:hover {
+    border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* --------------------------------------------------------------------------
+   3. Blur cost on small screens
+   --------------------------------------------------------------------------
+   backdrop-filter is per-pixel and re-runs on every scroll frame. An 18px
+   radius over a phone-width column is both the most expensive and the least
+   visible: at that size there isn't enough pane for the difference between
+   18px and 10px to register, but there is more than enough to drop frames on
+   mid-range hardware.
+
+   Scaling the tokens rather than the rules means every pane follows. */
+@media (max-width: 640px) {
+    :root {
+        --glass-blur: blur(10px) saturate(150%);
+        --glass-blur-sm: blur(7px) saturate(140%);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. Reduced transparency
+   --------------------------------------------------------------------------
+   The OS-level "reduce transparency" setting exists because layered
+   translucency is genuinely hard to read for some people. Honour it the same
+   way the no-backdrop-filter fallback does: trade the frost for opacity and
+   keep the layout, colour and depth cues intact. */
+@media (prefers-reduced-transparency: reduce) {
+    :root {
+        --glass: rgba(255, 255, 255, 0.92);
+        --glass-strong: rgba(255, 255, 255, 0.97);
+        --glass-soft: rgba(255, 255, 255, 0.85);
+        --glass-blur: none;
+        --glass-blur-sm: none;
+    }
+
+    header,
+    .nav-links,
+    footer,
+    .skill-card-floating,
+    .contact-item-glow,
+    .contact-card-hologram,
+    .skill-tag-glow,
+    .about-card,
+    .education-timeline,
+    .timeline-item,
+    .project-card-3d {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    .bg-animation {
+        animation: none;
+    }
+}

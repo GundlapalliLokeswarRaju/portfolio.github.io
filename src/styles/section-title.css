@@ -1,0 +1,31 @@
+/* ==========================================================================
+   8. Section titles
+   ========================================================================== */
+
+.section-title-amazing {
+    text-align: center;
+    font-size: var(--fs-section);
+    font-weight: 900;
+    margin-bottom: var(--space-xl);
+    background: var(--gradient-title);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite, gradientShift 8s ease-in-out infinite;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title-amazing::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--gradient-main);
+    border-radius: 2px;
+}
+

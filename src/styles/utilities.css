@@ -1,0 +1,191 @@
+/* ==========================================================================
+   15. Utilities, motion prefs, print
+   ========================================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-main);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+::selection {
+    background: rgba(var(--accent-rgb), 0.2);
+    color: var(--text-white);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Without backdrop-filter the panes would be near-transparent and the text
+   would sit straight on the aurora. Trade the frost for opacity instead. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    :root {
+        --glass: rgba(255, 255, 255, 0.86);
+        --glass-strong: rgba(255, 255, 255, 0.93);
+        --glass-soft: rgba(255, 255, 255, 0.7);
+    }
+
+    header,
+    .nav-links,
+    footer {
+        background: rgba(255, 255, 255, 0.94) !important;
+    }
+
+    .skill-card-floating,
+    .contact-item-glow,
+    .skill-tag-glow {
+        background: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Scroll-reveal. <Section> applies .reveal to every section and adds
+   .animate-in once useScrollReveal sees it enter the viewport. The start
+   state lives in CSS rather than inline styles so a section is never left
+   invisible if the JS fails to load. */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-in {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* No JS, no reveal — show everything rather than an empty page. */
+@media (scripting: none) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.skill-icon,
+.stat-icon,
+.contact-icon-amazing {
+    will-change: transform;
+}
+
+/* Coarse pointers get no hover-lift; it only fires on tap and looks stuck. */
+@media (hover: none) {
+    .stat-card-amazing:hover,
+    .skill-card-floating:hover,
+    .project-card-3d:hover,
+    .timeline-item:hover,
+    .about-card:hover,
+    .contact-item-glow:hover,
+    .benefit:hover,
+    .feature:hover,
+    .timeline-description li:hover,
+    .skill-tag-glow:hover,
+    .tech-tag-neon:hover {
+        transform: none;
+    }
+}
+
+/* Respect the OS "reduce motion" setting: keep the design, drop the movement. */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* The typewriter animation is what reveals this text — force it open. */
+    .ai-subtitle {
+        width: auto !important;
+        white-space: normal;
+        border-right: none;
+    }
+
+    .bg-animation,
+    .matrix-rain,
+    .floating-particles {
+        display: none;
+    }
+}
+
+@media print {
+    /* Sections start hidden and are revealed on scroll — but printing never
+       scrolls, so without this every section below the fold comes out blank.
+       Save-as-PDF is how a portfolio becomes a résumé attachment; it has to
+       print the whole page. */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .bg-animation,
+    .floating-particles,
+    .matrix-rain,
+    .loading-overlay,
+    .ai-brain,
+    .floating-code,
+    header,
+    footer,
+    .hero-buttons {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-top: 0;
+    }
+
+    section {
+        padding-block: 1.5rem;
+        page-break-inside: avoid;
+    }
+
+    .hero-title,
+    .section-title-amazing,
+    .stat-number-amazing {
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        color: #000 !important;
+    }
+
+    .about-card,
+    .skill-card-floating,
+    .timeline-item,
+    .project-card-3d,
+    .contact-card-hologram {
+        border: 1px solid #ccc !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    .ai-subtitle {
+        width: auto !important;
+        white-space: normal;
+        border: none;
+    }
+}

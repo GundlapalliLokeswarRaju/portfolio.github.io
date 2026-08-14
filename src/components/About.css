@@ -1,0 +1,182 @@
+/* ==========================================================================
+   9. About
+   ========================================================================== */
+
+.about-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.42));
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+@media (max-width: 960px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    /* Portrait + education lead on narrow screens, side by side while there
+       is still room for both. */
+    .about-visual {
+        order: -1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .education-timeline {
+        flex: 1 1 320px;
+    }
+}
+
+@media (max-width: 620px) {
+    .about-visual {
+        flex-direction: column;
+    }
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.about-card {
+    background: var(--surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    padding: var(--space-lg);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+    transition: left 0.5s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glass-shadow-lift);
+}
+
+.about-card:hover::before {
+    left: 100%;
+}
+
+.about-card h3 {
+    color: var(--accent);
+    font-size: var(--fs-h3);
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+}
+
+.about-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+.about-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.profile-glow {
+    width: clamp(130px, 14vw, 200px);
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    background: var(--gradient-main);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: relative;
+    animation: profilePulse 4s ease-in-out infinite;
+}
+
+.profile-glow::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.profile-icon {
+    font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
+    color: var(--accent);
+    z-index: 1;
+}
+
+.profile-photo {
+    position: absolute;
+    inset: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+@keyframes profilePulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.2); }
+    50% { box-shadow: 0 16px 46px rgba(var(--accent-rgb), 0.38); }
+}
+
+.education-timeline {
+    background: var(--surface);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    padding: var(--space-lg);
+    border-radius: var(--r-md);
+    border: 1px solid var(--line);
+    box-shadow: var(--glass-shadow);
+    width: 100%;
+}
+
+.education-timeline h4 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.edu-item {
+    margin-bottom: var(--space-sm);
+    padding: var(--space-sm);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--r-sm);
+    border-left: 3px solid var(--accent);
+}
+
+.edu-item:last-child {
+    margin-bottom: 0;
+}
+
+.edu-item strong {
+    color: var(--text-white);
+}
+
+/* Block + right-align instead of float: no clearing bugs, wraps cleanly. */
+.grade {
+    display: block;
+    text-align: right;
+    color: var(--accent);
+    font-weight: 600;
+}
+
