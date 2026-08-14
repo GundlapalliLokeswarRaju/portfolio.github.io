@@ -12,6 +12,7 @@ npm install
 npm run dev      # dev server with hot reload
 npm run build    # production build into dist/
 npm run preview  # serve the production build locally
+npm run deploy   # build and publish to the gh-pages branch
 ```
 
 ## Layout
@@ -54,8 +55,21 @@ blur drains the colour and costs a full extra GPU pass per element. See
 
 ## Deployment
 
-Pushing to `main` builds and deploys via GitHub Actions. Enable it once under
-**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+```bash
+npm run deploy
+```
+
+Builds into `dist/` and force-pushes it to the **`gh-pages`** branch, which is
+what GitHub Pages serves. Deploys are manual — nothing publishes on push to
+`main`, so you can commit work in progress freely.
+
+One-time setup, under **Settings → Pages → Build and deployment**:
+
+- Source: **Deploy from a branch**
+- Branch: **`gh-pages`** / **`/ (root)`**
+
+`main` holds the source; `gh-pages` holds only build output and is rewritten on
+every deploy — never commit to it by hand.
 
 `vite.config.js` sets `base: '/portfolio.github.io/'` because this is a Pages
 *project* site. If you move to a custom domain or a `<username>.github.io`
