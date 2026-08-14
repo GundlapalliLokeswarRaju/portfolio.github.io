@@ -55,6 +55,44 @@
 }
 
 /* --------------------------------------------------------------------------
+   Project links
+   --------------------------------------------------------------------------
+   Glass pills for the live-demo / source links. Styled as clearly clickable —
+   these are the highest-value elements on the page and shouldn't read as
+   another tag chip. */
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block: var(--space-sm);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--r-pill);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
+    box-shadow: 0 2px 10px rgba(var(--accent-rgb), 0.1), var(--glass-edge);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease,
+        background 0.25s ease, color 0.25s ease;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    background: var(--gradient-main);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.3);
+}
+
+/* --------------------------------------------------------------------------
    404
    -------------------------------------------------------------------------- */
 

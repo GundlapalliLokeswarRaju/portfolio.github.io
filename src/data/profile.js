@@ -2,13 +2,18 @@
    Everything a recruiter reads first lives here, so it can be updated without
    touching a component. */
 
+/* The hero is read in about six seconds. It has to answer "what does this
+   person actually build, and has it shipped" in that window — so it names
+   concrete systems and real numbers instead of promising to transform your
+   business with cutting-edge innovation, which says nothing and is what every
+   other portfolio already says. */
 export const profile = {
   name: 'Lokeswar Raju Gundlapalli',
   shortName: 'Lokeswar Raju',
-  role: 'AI Engineer & ML Expert',
+  role: 'AI Engineer — Real-Time Voice, LLMs & RAG',
   pageTitle: 'Lokeswar Raju Gundlapalli - AI Engineer',
   heroDescription:
-    'Transforming ideas into intelligent solutions with cutting-edge AI, ML algorithms, and cloud deployment. Ready to revolutionize your business with data-driven innovation that delivers real results!',
+    'I build LLM and speech systems that run in production: a real-time Telugu voice agent on the OpenAI Realtime API, RAG pipelines grounded in real documents, and a call-analytics platform processing 20,000+ recordings a month. Shipped with Docker, CI, auth and 90% test coverage — not just notebooks.',
   photoAlt: 'Portrait of Lokeswar Raju Gundlapalli',
 };
 

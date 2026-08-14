@@ -1,4 +1,8 @@
-/* Newest role first — the timeline renders in array order. */
+/* Newest role first — the timeline renders in array order.
+
+   Bullets follow the XYZ shape recruiters scan for: what changed, the number
+   that proves it, then the method. Numbers are only those already evidenced by
+   the projects on this site. */
 
 export const experience = [
   {
@@ -6,12 +10,12 @@ export const experience = [
     title: 'AI Engineer',
     company: 'Brolly Software Solutions Pvt Ltd',
     summary:
-      'Building real-time conversational AI systems for regional-language learners, with an emphasis on low-latency voice pipelines, retrieval-grounded answers, and production hardening.',
+      'Building real-time conversational AI for regional-language learners — low-latency voice pipelines, retrieval-grounded answers, and the production hardening that lets them run unattended.',
     highlights: [
-      '🎙️ Architecting VoxFlow, a Telugu-first AI voice agent on FastAPI and the OpenAI Realtime API',
-      '📚 Engineering RAG pipelines over course material so answers are grounded in real documents',
-      '🔊 Designing full-duplex audio with VAD, noise reduction, and WebRTC/telephony bridges',
-      '🛡️ Hardening for production: auth, rate limiting, security headers, 90% test coverage, Docker + CI',
+      '🎙️ Architected VoxFlow, a Telugu-first voice agent on FastAPI and the OpenAI Realtime API, reachable from both the browser (WebRTC) and ordinary phone lines (Plivo)',
+      '📚 Built RAG pipelines over PDF/DOCX/TXT course material with a cached, change-detecting index, so answers cite real documents instead of being improvised',
+      '🔊 Engineered full-duplex audio — FFT-based voice activity detection, adaptive noise reduction, pipelined TTS and μ-law passthrough — to keep conversation latency low enough to interrupt',
+      '🛡️ Hardened for production with fail-closed auth, per-IP rate limiting and CSP/HSTS middleware, backed by 152 tests at 90% coverage and Docker + GitHub Actions CI',
     ],
   },
   {
@@ -19,12 +23,12 @@ export const experience = [
     title: 'Freelance AI/ML Engineer',
     company: 'Independent Consultant',
     summary:
-      'Delivered production AI automation for clients as an independent engineer, owning projects end to end from problem framing through deployment and ongoing support.',
+      'Ran an independent AI automation practice, owning delivery end to end — problem framing, build, deployment and ongoing support — for hospitality clients.',
     highlights: [
-      '🏨 Built a voice analytics and sentiment pipeline for luxury hotel groups via Skillkoder',
-      '🗣️ Automated transcription of 700+ customer service calls per day with Whisper (Large)',
-      '📉 Reduced manual call monitoring effort by ~90% through LLM-based conversation analysis',
-      '💼 Shipped it as a subscription-based AI product with recurring revenue',
+      '📉 Cut manual call monitoring effort by ~90% for luxury hotel groups by replacing human spot-checks with an automated transcription and sentiment pipeline',
+      '🗣️ Automated 100% of call transcription at 700+ calls per day using Whisper (Large), handling multilingual audio without per-language tuning',
+      '💼 Packaged the pipeline as a subscription AI product generating recurring revenue, rather than a one-off engagement',
+      '🏨 Delivered it into production across three hotel groups — Green Park, Avasa and Mari Gold — via Skillkoder',
     ],
   },
   {
@@ -32,12 +36,12 @@ export const experience = [
     title: 'Software Engineer',
     company: 'BigEBrains Pvt Ltd',
     summary:
-      'Led AI-based project development and deployment in a dynamic startup environment. Combined technical proficiency in data science libraries with practical software engineering skills to deliver robust, scalable solutions.',
+      'Led AI project delivery and deployment in an early-stage startup, pairing data science work with the software engineering needed to get it live.',
     highlights: [
-      '🚀 Developed cutting-edge AI solutions using modern ML frameworks',
-      '☁️ Implemented cloud deployment strategies with AWS and Docker',
-      '🔄 Managed CI/CD pipelines for automated deployments',
-      '👥 Collaborated with cross-functional teams in Agile environment',
+      '🌐 Deployed two production websites — bigclasses.ai and bigebrains.com — on a React + Django stack behind NGINX on AWS',
+      '☁️ Implemented cloud deployment with AWS and Docker, replacing manual releases with reproducible builds',
+      '🔄 Set up CI/CD pipelines so deployments ran automatically instead of by hand',
+      '👥 Led AI-based project development across a cross-functional team using Agile delivery',
     ],
   },
 ];

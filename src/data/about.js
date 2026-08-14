@@ -1,15 +1,20 @@
+/* Three cards, each answering a question a hiring manager is actually asking:
+   what do you build, has it survived contact with production, and can you work
+   with people. Claims stay tied to the projects listed elsewhere on the site so
+   nothing here is unbacked. */
+
 export const aboutCards = [
   {
-    title: '🎯 Mission-Driven AI Engineer',
-    body: "I'm an experienced AI Engineer and Software Developer with a strong foundation in machine learning, data science, and software development. Currently an AI Engineer at Brolly Software Solutions Pvt. Ltd., following a freelance stint delivering production AI automation and a software engineering role at BigEBrains Pvt. Ltd., I bring expertise in Python programming, LLM and voice systems, and end-to-end application deployment.",
+    title: '🎙️ Real-Time Voice & LLM Systems',
+    body: "I'm an AI Engineer at Brolly Software Solutions, building VoxFlow — a Telugu-first voice tutor that holds a live conversation over both the browser (WebRTC) and ordinary phone calls (Plivo). The hard parts are the ones users never see: full-duplex audio with FFT-based voice activity detection, adaptive noise reduction, and RAG that keeps answers tied to real course material instead of letting the model improvise.",
   },
   {
-    title: '🏆 Proven Track Record',
-    body: 'My achievements include building a real-time Telugu-first AI voice agent with RAG-grounded answers, shipping a call analytics pipeline that processes 20,000+ recordings a month, developing healthcare prediction systems, and implementing cloud solutions using AWS, Docker, and CI/CD pipelines.',
+    title: '📈 Production, Not Prototypes',
+    body: 'Before this I ran my own AI automation practice, shipping a call-analytics pipeline for luxury hotel groups that transcribes 700+ calls a day with Whisper and scores sentiment with local LLMs — cutting manual call monitoring by roughly 90% and selling as a subscription product with recurring revenue. My work goes out with Docker, CI/CD, fail-closed auth, rate limiting and test coverage, because that is the difference between a demo and a system someone depends on.',
   },
   {
-    title: '🤝 Team Leadership',
-    body: 'I demonstrate strong collaborative abilities through cross-functional team leadership and Agile development practices, with experience in the complete software development lifecycle from development to production deployment.',
+    title: '🤝 Ownership End to End',
+    body: 'I take projects from problem framing through deployment and support — data pipelines, model selection, API design, infrastructure and monitoring. At BigEBrains I led AI project delivery and deployed two production sites on AWS. I work comfortably across a cross-functional team in Agile delivery, and I am equally comfortable being the person accountable for whether it works at 2am.',
   },
 ];
 

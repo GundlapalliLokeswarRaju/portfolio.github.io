@@ -1,4 +1,12 @@
-/* Each project renders one .project-card-3d. Order here is display order. */
+/* Each project renders one .project-card-3d. Order here is display order, and
+   it is deliberate: the two systems with real production scale come first,
+   because a recruiter reads roughly the first card and a half.
+
+   Structure follows what hiring screens reward — open on the problem and the
+   outcome, then the engineering that made it work, then the stack. `links` is
+   the highest-signal field of the lot: a reachable demo or repo outranks any
+   description, so it renders as buttons at the top of the card. Client work
+   that can't be linked simply omits it. */
 
 export const projects = [
   {
@@ -6,23 +14,23 @@ export const projects = [
     date: 'Apr 2026 - Present',
     client: 'Brolly Software Solutions Pvt Ltd | Real-Time Conversational AI',
     description:
-      'Built a real-time, low-latency AI voice tutor that answers digital-marketing questions in conversational Telugu/Tenglish over both the browser (WebRTC) and phone calls (Plivo telephony bridge), removing the English-only barrier for regional learners.',
+      'Regional learners were locked out of digital-marketing coursework by an English-only interface. VoxFlow answers their questions out loud in conversational Telugu/Tenglish, in real time, over both the browser and an ordinary phone call — so a student with no laptop and no English can still take the course.',
     features: [
       {
         icon: 'fas fa-book-open',
-        text: 'RAG pipeline over PDF/DOCX/TXT course material with cached, change-detecting index',
+        text: 'RAG over PDF/DOCX/TXT course material with a cached, change-detecting index — answers stay grounded in real documents instead of improvised',
       },
       {
         icon: 'fas fa-wave-square',
-        text: 'Full-duplex audio: FFT-based VAD, adaptive noise reduction, pipelined TTS, μ-law passthrough',
+        text: 'Full-duplex audio: FFT-based VAD, adaptive noise reduction, pipelined TTS and μ-law passthrough, tuned so a student can interrupt mid-sentence',
       },
       {
         icon: 'fas fa-cubes',
-        text: 'Modular FastAPI backend (~26 modules) with a pluggable OpenAI/Groq provider layer',
+        text: 'Modular FastAPI backend of ~26 modules behind a pluggable OpenAI/Groq provider layer, so swapping model vendors is config, not a rewrite',
       },
       {
         icon: 'fas fa-lock',
-        text: 'Production hardening: fail-closed auth, per-IP rate limiting, CSP/HSTS middleware',
+        text: 'Production hardening: fail-closed auth, per-IP rate limiting and CSP/HSTS middleware, shipped on Docker with GitHub Actions CI',
       },
     ],
     tech: [
@@ -38,28 +46,28 @@ export const projects = [
     stats: ['152 Tests @ 90% Coverage', 'Browser + Phone Calls', 'Grounded, Not Hallucinated'],
   },
   {
-    title: '📞 AI Automation — Voice Analytics & Sentiment Analysis',
+    title: '📞 Voice Analytics & Sentiment Engine',
     date: 'Nov 2025 - Mar 2026',
     client:
-      'Freelance via Skillkoder | Hospitality (Green Park, Avasa, Mari Gold Hotels) | AI/ML Engineer',
+      'Freelance via Skillkoder | Green Park, Avasa & Mari Gold Hotels | AI/ML Engineer',
     description:
-      'Built a production-grade AI automation pipeline analyzing 700+ customer service calls per day across multiple luxury hotels, delivered as a subscription-based AI product with recurring revenue.',
+      'Three luxury hotel groups were sampling a handful of guest calls by hand and hoping the rest were fine. This pipeline listens to all of them — 700+ a day, 20,000+ a month — transcribing, scoring sentiment and flagging the calls a manager actually needs to hear. Manual monitoring effort fell by roughly 90%, and it shipped as a subscription product with recurring revenue.',
     features: [
       {
         icon: 'fas fa-microphone',
-        text: '100% of call transcription automated with Whisper (Large) for multilingual audio',
+        text: '100% of call transcription automated with Whisper (Large), handling multilingual guest audio without per-language tuning',
       },
       {
         icon: 'fas fa-comments',
-        text: 'LLM sentiment analysis via Ollama: Positive, Negative, Neutral, Rude, Standard',
+        text: 'Sentiment classified locally with Ollama across five labels — Positive, Negative, Neutral, Rude, Standard — keeping guest audio in-house',
       },
       {
         icon: 'fas fa-user-check',
-        text: 'Greeting-phrase detection to monitor employee professionalism and consistency',
+        text: 'Greeting-phrase detection to measure whether staff actually follow the script, turning a subjective review into a metric',
       },
       {
         icon: 'fas fa-chart-line',
-        text: 'Actionable insights driving customer experience and service quality improvements',
+        text: 'Insights surfaced back to management, driving concrete service-quality changes rather than another dashboard nobody opens',
       },
     ],
     tech: [
@@ -71,83 +79,129 @@ export const projects = [
       'Audio Processing',
       'Linux',
     ],
-    stats: ['700+ Calls/Day', '20,000+ Recordings/Month', '~90% Less Manual Effort'],
+    stats: ['20,000+ Recordings/Month', '700+ Calls/Day', '~90% Less Manual Effort'],
   },
   {
     title: '🤖 AI-Powered Vendor Intelligence Platform',
     date: 'Feb 2025 - June 2025',
     client: 'Client: Acads360 | Full-Stack AI Development',
     description:
-      'Developed an intelligent B2B vendor research and comparison platform that automates vendor discovery, analysis, and selection using advanced AI technologies including LLMs, RAG systems, and multi-agent frameworks.',
+      'B2B vendor selection meant analysts reading listings and PDFs by hand for days. This platform automates the discovery-to-shortlist path with a multi-agent crew that scrapes, reads and ranks vendors — processing 10,000+ listings and answering questions directly from the documents vendors supply.',
     features: [
-      { icon: 'fas fa-spider', text: 'Intelligent Web Scraping with CrewAI orchestration' },
+      {
+        icon: 'fas fa-spider',
+        text: 'Multi-agent scraping and research orchestrated with CrewAI, so discovery scales past what a human analyst can read',
+      },
       {
         icon: 'fas fa-chart-line',
-        text: 'Smart Vendor Ranking Algorithm with AI-powered analysis',
+        text: 'Vendor ranking algorithm combining scraped signals with LLM analysis to produce a defensible shortlist, not just a list',
       },
       {
         icon: 'fas fa-file-alt',
-        text: 'Document Intelligence & RAG System (PDF, Word, Excel, CSV)',
+        text: 'Document intelligence with RAG across PDF, Word, Excel and CSV — questions answered from the vendor’s own paperwork',
       },
-      { icon: 'fas fa-cloud', text: 'Production deployment with AWS EC2 & Docker' },
+      {
+        icon: 'fas fa-cloud',
+        text: 'Deployed to production on AWS EC2 with Docker and CI/CD',
+      },
     ],
-    tech: ['Python', 'CrewAI', 'RAG', 'AWS', 'Docker', 'CI/CD'],
-    stats: ['10K+ Listings Processed', 'Multi-format Support', 'Real-time Analysis'],
+    tech: ['Python', 'CrewAI', 'RAG', 'LLMs', 'AWS EC2', 'Docker', 'CI/CD'],
+    stats: ['10K+ Listings Processed', 'Multi-Format Documents', 'Real-Time Analysis'],
   },
   {
-    title: '🌐 Production Website Deployment',
-    date: '2025',
-    client: 'BigEBrains Pvt. Ltd. | DevOps Engineering',
+    title: '🏥 Liver Disease MLOps — Registry to Kubernetes',
+    date: 'End-to-end MLOps implementation',
+    client: 'Healthcare ML | Full Lifecycle Ownership',
     description:
-      'Led complete deployment of two production websites implementing modern DevOps practices and cloud infrastructure for scalable, secure web applications.',
+      'A model that only exists in a notebook helps nobody. This project takes liver-disease prediction from raw patient records all the way to a monitored service on Kubernetes — reaching 84% accuracy, with MLflow tracking every experiment and a registry deciding which version is actually serving traffic.',
     features: [
-      { icon: 'fas fa-graduation-cap', text: 'bigclasses.ai - AI-focused educational platform' },
-      { icon: 'fas fa-building', text: 'bigebrains.com - Corporate website and business portal' },
-      { icon: 'fas fa-layer-group', text: 'React.js frontend with Django backend architecture' },
-      { icon: 'fas fa-shield-alt', text: 'Scalable, secure production environment' },
-    ],
-    tech: ['React.js', 'Django', 'AWS', 'DevOps', 'NGINX'],
-    stats: ['2 Live Websites', 'Modern Architecture', 'High Performance'],
-  },
-  {
-    title: '🏥 Liver Disease Prediction System',
-    date: 'Academic Leadership Project',
-    client: 'Healthcare ML Project',
-    description:
-      'Led team development of healthcare prediction system achieving good accuracy using logistic regression with comprehensive data visualization dashboard.',
-    features: [
-      { icon: 'fas fa-users', text: 'Team leadership and project management' },
-      { icon: 'fas fa-brain', text: 'Machine Learning model implementation' },
-      { icon: 'fas fa-chart-bar', text: 'Comprehensive data visualization dashboard' },
-      { icon: 'fas fa-heartbeat', text: 'Healthcare domain expertise application' },
-    ],
-    tech: ['Python', 'Scikit-learn', 'Pandas', 'Data Viz', 'Healthcare ML'],
-    stats: ['Good Accuracy', 'Team Leadership', 'Healthcare Impact'],
-  },
-  {
-    title: '🏥 End-to-End Machine Learning Deployment with MLflow Registry & Kubernetes',
-    date: 'Hands-on implementation project to practice real-world MLOps workflows',
-    client: 'Healthcare ML Project',
-    description:
-      'Developed a machine learning pipeline to predict liver disease using patient health records. The project covers the entire ML lifecycle — from data ingestion and preprocessing to model training, deployment with Kubernetes, and monitoring with Prometheus & Grafana. Integrated MLflow for experiment tracking and model registry to simulate real-world production workflows.',
-    features: [
-      { icon: 'fas fa-users', text: 'MLOps Engineer (End-to-End Implementation)' },
-      { icon: 'fas fa-brain', text: 'Machine Learning model implementation' },
-      { icon: 'fas fa-chart-bar', text: 'Comprehensive data visualization dashboard' },
-      { icon: 'fas fa-heartbeat', text: 'Healthcare domain expertise application' },
+      {
+        icon: 'fas fa-flask',
+        text: 'MLflow experiment tracking and model registry, so promoting a model is a recorded decision rather than a file copy',
+      },
+      {
+        icon: 'fas fa-dharmachakra',
+        text: 'Containerised deployment on Kubernetes behind a FastAPI inference service',
+      },
+      {
+        icon: 'fas fa-gauge-high',
+        text: 'Live monitoring with Prometheus and Grafana, so drift and latency are visible instead of discovered by a user',
+      },
+      {
+        icon: 'fas fa-diagram-project',
+        text: 'Reproducible pipeline covering ingestion, preprocessing, training and evaluation',
+      },
     ],
     tech: [
       'Python',
       'Scikit-learn',
-      'Pandas',
-      'FastAPI',
       'MLflow',
-      'MLOps',
-      'Grafana',
-      'Prometheus',
+      'FastAPI',
       'Docker',
       'Kubernetes',
+      'Prometheus',
+      'Grafana',
+      'MLOps',
     ],
-    stats: ['Accuracy: 84%', 'Role: End-to-End Ownership', 'Impact: Early Detection in Healthcare'],
+    stats: ['84% Accuracy', 'Registry-Gated Releases', 'Monitored in Production'],
+    links: [
+      {
+        label: 'Source Code',
+        href: 'https://github.com/GundlapalliLokeswarRaju/LiverDiseasePrediction_mlops',
+        icon: 'fab fa-github',
+      },
+    ],
+  },
+  {
+    title: '🌐 Production Deployment — Two Live Platforms',
+    date: '2025',
+    client: 'BigEBrains Pvt. Ltd. | DevOps Engineering',
+    description:
+      'Owned the deployment of two customer-facing sites from a working codebase to a live, secured production environment on AWS — both still serving traffic today.',
+    features: [
+      {
+        icon: 'fas fa-graduation-cap',
+        text: 'bigclasses.ai — AI-focused education platform, live in production',
+      },
+      {
+        icon: 'fas fa-building',
+        text: 'bigebrains.com — corporate site and business portal, live in production',
+      },
+      {
+        icon: 'fas fa-layer-group',
+        text: 'React.js frontend against a Django backend, served through NGINX on AWS',
+      },
+      {
+        icon: 'fas fa-shield-alt',
+        text: 'CI/CD pipelines replacing manual releases, in a secured and scalable environment',
+      },
+    ],
+    tech: ['React.js', 'Django', 'AWS', 'NGINX', 'Docker', 'CI/CD'],
+    stats: ['2 Live Platforms', 'Automated Releases', 'Still in Production'],
+    links: [
+      { label: 'bigclasses.ai', href: 'https://bigclasses.ai', icon: 'fas fa-arrow-up-right-from-square' },
+      { label: 'bigebrains.com', href: 'https://bigebrains.com', icon: 'fas fa-arrow-up-right-from-square' },
+    ],
+  },
+  {
+    title: '🩺 Liver Disease Prediction — Team Lead',
+    date: 'Academic Leadership Project',
+    client: 'Healthcare ML | Team of Engineers',
+    description:
+      'Led a student team building a liver-disease classifier on patient health records, pairing a logistic-regression model with a visualisation dashboard that made the predictions interpretable to non-technical reviewers.',
+    features: [
+      { icon: 'fas fa-users', text: 'Led the team and owned project planning and delivery' },
+      { icon: 'fas fa-brain', text: 'Logistic regression model trained on clinical patient records' },
+      {
+        icon: 'fas fa-chart-bar',
+        text: 'Visualisation dashboard making predictions explainable rather than opaque',
+      },
+      {
+        icon: 'fas fa-heartbeat',
+        text: 'Framed around early detection, where a false negative is the expensive error',
+      },
+    ],
+    tech: ['Python', 'Scikit-learn', 'Pandas', 'Data Visualisation', 'Healthcare ML'],
+    stats: ['Team Leadership', 'Interpretable Output', 'Early-Detection Focus'],
   },
 ];

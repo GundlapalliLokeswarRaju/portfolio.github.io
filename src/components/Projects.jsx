@@ -7,7 +7,7 @@ export default function Projects() {
       <h2 className="section-title-amazing">Featured Projects</h2>
 
       <div className="projects-grid">
-        {projects.map(({ title, date, client, description, features, tech, stats }) => (
+        {projects.map(({ title, date, client, description, features, tech, stats, links }) => (
           <article className="project-card-3d" key={title}>
             <div className="project-header">
               <h3 className="project-title-glow">{title}</h3>
@@ -15,6 +15,26 @@ export default function Projects() {
             </div>
 
             <p className="project-client">{client}</p>
+
+            {/* Sits directly under the title: a reachable demo or repo is the
+                first thing a reviewer clicks, so it shouldn't be buried at the
+                bottom of the card. Omitted entirely for client work that
+                can't be linked. */}
+            {links?.length > 0 && (
+              <div className="project-links">
+                {links.map(({ label, href, icon }) => (
+                  <a
+                    key={href}
+                    className="project-link"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className={icon} aria-hidden="true" /> {label}
+                  </a>
+                ))}
+              </div>
+            )}
 
             <div className="project-description">
               <p>{description}</p>
