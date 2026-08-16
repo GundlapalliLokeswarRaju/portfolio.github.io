@@ -1,42 +1,582 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lokeswar Raju Gundlapalli — AI Engineer</title>
+<meta name="description" content="AI Engineer building real-time voice, RAG and LLM systems that run in production — a Telugu-first voice agent on the OpenAI Realtime API, call analytics over 20,000+ recordings a month, shipped with CI, auth and 90% test coverage.">
+<meta name="author" content="Lokeswar Raju Gundlapalli">
+<link rel="canonical" href="https://gundlapallilokeswarraju.github.io/portfolio.github.io/">
 
-    <title>Lokeswar Raju Gundlapalli - AI Engineer</title>
-    <meta
-      name="description"
-      content="AI Engineer and ML specialist building real-time voice agents, RAG pipelines, and production ML systems with Python, FastAPI, AWS and Docker."
-    />
-    <meta name="theme-color" content="#f7f0e3" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lokeswar Raju Gundlapalli — AI Engineer">
+<meta property="og:description" content="Production, not prototypes. Real-time voice, RAG and LLM systems that ship.">
+<meta property="og:image" content="assets/img/lokesh.jpeg">
 
-    <!-- Inline SVG favicon: no extra request, no 404 in the console. -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A4%96%3C/text%3E%3C/svg%3E"
-    />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎙️</text></svg>">
+</head>
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- The stylesheet asks for Inter throughout; without this the whole page
-         silently falls back to Segoe UI. One variable font covers 400-900,
-         which is every weight the CSS uses. swap so text is never invisible
-         while it loads. -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap"
-      rel="stylesheet"
-    />
+<!-- Fixed behind everything: two drifting colour washes and a film-grain
+     sheet. The grain is what gives the black a surface. -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop-wash backdrop-wash-a"></div>
+  <div class="backdrop-wash backdrop-wash-b"></div>
+  <div class="backdrop-grain"></div>
+</div>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<div class="page">
+
+<header class="nav" id="nav">
+  <div class="shell nav-inner">
+    <a class="nav-mark" href="#top">Lokeswar <span>Raju</span></a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <nav class="nav-links" id="nav-links" aria-label="Sections">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══════════════════ Hero ══════════════════ -->
+<section class="hero" id="top">
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow hero-tagline" data-reveal>Production, not prototypes</p>
+
+        <h1 class="display hero-name" data-reveal style="--d:1">
+          Lokeswar Raju<br><em>Gundlapalli</em>
+        </h1>
+
+        <p class="hero-role" data-reveal style="--d:2">
+          AI Engineer — Real-Time Voice, LLMs &amp; RAG
+        </p>
+
+        <p class="hero-copy" data-reveal style="--d:3">
+          Real-time Telugu voice agent on the OpenAI Realtime API, RAG grounded in real
+          documents, call analytics over 20,000+ recordings a month — shipped with CI,
+          auth and 90% test coverage.
+        </p>
+
+        <div class="hero-actions" data-reveal style="--d:4">
+          <a class="btn btn-solid" href="#work">
+            <i class="fas fa-arrow-down" aria-hidden="true"></i> See the work
+          </a>
+          <a class="btn" href="mailto:glokesh8374@gmail.com">
+            <i class="fas fa-envelope" aria-hidden="true"></i> Start a conversation
+          </a>
+        </div>
+      </div>
+
+      <figure class="hero-portrait" data-reveal style="--d:3">
+        <span class="hero-portrait-rule" aria-hidden="true"></span>
+        <img src="assets/img/lokesh.jpeg" alt="Portrait of Lokeswar Raju Gundlapalli" width="420" height="560" fetchpriority="high">
+      </figure>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-line"></span>
+    Scroll
+  </div>
+</section>
+
+<!-- ══════════════════ Stats ══════════════════ -->
+<section class="stats">
+  <div class="shell stats-grid">
+    <div class="stat" data-reveal>
+      <span class="stat-figure" data-count="20000" data-suffix="+">0</span>
+      <span class="stat-label">Call recordings processed monthly</span>
+    </div>
+    <div class="stat" data-reveal style="--d:1">
+      <span class="stat-figure" data-count="6">0</span>
+      <span class="stat-label">AI systems shipped to production</span>
+    </div>
+    <div class="stat" data-reveal style="--d:2">
+      <span class="stat-figure" data-count="90" data-suffix="%">0</span>
+      <span class="stat-label">Less manual review effort</span>
+    </div>
+    <div class="stat" data-reveal style="--d:3">
+      <span class="stat-figure" data-count="152">0</span>
+      <span class="stat-label">Automated tests at 90% coverage</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ About ══════════════════ -->
+<section class="section" id="about">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>01 — About</p>
+      <h2 class="section-title" data-reveal style="--d:1">
+        An engineer who ships<br><em>systems, not demos.</em>
+      </h2>
+    </div>
+
+    <div class="about-grid">
+      <article class="panel" data-panel data-reveal>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <span class="panel-index">I</span>
+        <h3 class="panel-title">Real-Time Voice &amp; LLM Systems</h3>
+        <p class="panel-body">
+          I'm an AI Engineer at Brolly Software Solutions, building VoxFlow — a Telugu-first
+          voice tutor that holds a live conversation over both the browser (WebRTC) and
+          ordinary phone calls (Plivo). The hard parts are the ones users never see:
+          full-duplex audio with FFT-based voice activity detection, adaptive noise
+          reduction, and RAG that keeps answers tied to real course material instead of
+          letting the model improvise.
+        </p>
+      </article>
+
+      <article class="panel" data-panel data-reveal style="--d:1">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <span class="panel-index">II</span>
+        <h3 class="panel-title">Production, Not Prototypes</h3>
+        <p class="panel-body">
+          Before this I ran my own AI automation practice, shipping a call-analytics
+          pipeline for luxury hotel groups that transcribes 700+ calls a day with Whisper
+          and scores sentiment with local LLMs — cutting manual call monitoring by roughly
+          90% and selling as a subscription product with recurring revenue. My work goes out
+          with Docker, CI/CD, fail-closed auth, rate limiting and test coverage, because
+          that is the difference between a demo and a system someone depends on.
+        </p>
+      </article>
+
+      <article class="panel" data-panel data-reveal style="--d:2">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <span class="panel-index">III</span>
+        <h3 class="panel-title">Ownership End to End</h3>
+        <p class="panel-body">
+          I take projects from problem framing through deployment and support — data
+          pipelines, model selection, API design, infrastructure and monitoring. At
+          BigEBrains I led AI project delivery and deployed two production sites on AWS. I
+          work comfortably across a cross-functional team in Agile delivery, and I am
+          equally comfortable being the person accountable for whether it works at 2am.
+        </p>
+      </article>
+    </div>
+
+    <div class="education">
+      <div class="education-item" data-reveal>
+        <span class="education-degree">B.Tech CSE</span>
+        <span class="education-place">GVR&amp;S College of Engineering</span>
+        <span class="education-grade">7.8 CGPA</span>
+      </div>
+      <div class="education-item" data-reveal style="--d:1">
+        <span class="education-degree">Intermediate</span>
+        <span class="education-place">Sri Chaitanya Jr College</span>
+        <span class="education-grade">85%</span>
+      </div>
+      <div class="education-item" data-reveal style="--d:2">
+        <span class="education-degree">SSC</span>
+        <span class="education-place">Sri P Gopi Reddy High School</span>
+        <span class="education-grade">9.8 GPA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Work ══════════════════ -->
+<section class="section" id="work">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>02 — Selected Work</p>
+      <h2 class="section-title" data-reveal style="--d:1">
+        Six systems,<br><em>all of them live.</em>
+      </h2>
+      <p class="section-intro" data-reveal style="--d:2">
+        Ordered by production scale. Every number below is drawn from something
+        that shipped and can be talked through in an interview.
+      </p>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="stack" data-stack>
+
+      <!-- 1 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">🎙️ VoxFlow — Telugu-First AI Voice Agent</h3>
+          <span class="project-date">Apr 2026 — Present</span>
+        </div>
+        <p class="project-client">Brolly Software Solutions Pvt Ltd | Real-Time Conversational AI</p>
+        <p class="project-copy">
+          Regional learners were locked out of digital-marketing coursework by an
+          English-only interface. VoxFlow answers their questions out loud in conversational
+          Telugu/Tenglish, in real time, over both the browser and an ordinary phone call —
+          so a student with no laptop and no English can still take the course.
+        </p>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-book-open" aria-hidden="true"></i><span>RAG over PDF/DOCX/TXT course material with a cached, change-detecting index — answers stay grounded in real documents instead of improvised</span></div>
+          <div class="feature"><i class="fas fa-wave-square" aria-hidden="true"></i><span>Full-duplex audio: FFT-based VAD, adaptive noise reduction, pipelined TTS and μ-law passthrough, tuned so a student can interrupt mid-sentence</span></div>
+          <div class="feature"><i class="fas fa-cubes" aria-hidden="true"></i><span>Modular FastAPI backend of ~26 modules behind a pluggable OpenAI/Groq provider layer, so swapping model vendors is config, not a rewrite</span></div>
+          <div class="feature"><i class="fas fa-lock" aria-hidden="true"></i><span>Production hardening: fail-closed auth, per-IP rate limiting and CSP/HSTS middleware, shipped on Docker with GitHub Actions CI</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">FastAPI</span><span class="tag" style="--i:2">OpenAI Realtime API</span><span class="tag" style="--i:3">WebRTC</span><span class="tag" style="--i:4">RAG</span><span class="tag" style="--i:5">Plivo</span><span class="tag" style="--i:6">Docker</span><span class="tag" style="--i:7">GitHub Actions</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat"><b>152</b> tests @ 90% coverage</span>
+          <span class="project-stat">Browser + phone calls</span>
+          <span class="project-stat">Grounded, not hallucinated</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">📞 Voice Analytics &amp; Sentiment Engine</h3>
+          <span class="project-date">Nov 2025 — Mar 2026</span>
+        </div>
+        <p class="project-client">Freelance via Skillkoder | Green Park, Avasa &amp; Mari Gold Hotels</p>
+        <p class="project-copy">
+          Three luxury hotel groups were sampling a handful of guest calls by hand and hoping
+          the rest were fine. This pipeline listens to all of them — 700+ a day, 20,000+ a
+          month — transcribing, scoring sentiment and flagging the calls a manager actually
+          needs to hear. Manual monitoring effort fell by roughly 90%, and it shipped as a
+          subscription product with recurring revenue.
+        </p>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-microphone" aria-hidden="true"></i><span>100% of call transcription automated with Whisper (Large), handling multilingual guest audio without per-language tuning</span></div>
+          <div class="feature"><i class="fas fa-comments" aria-hidden="true"></i><span>Sentiment classified locally with Ollama across five labels — Positive, Negative, Neutral, Rude, Standard — keeping guest audio in-house</span></div>
+          <div class="feature"><i class="fas fa-user-check" aria-hidden="true"></i><span>Greeting-phrase detection to measure whether staff actually follow the script, turning a subjective review into a metric</span></div>
+          <div class="feature"><i class="fas fa-chart-line" aria-hidden="true"></i><span>Insights surfaced back to management, driving concrete service-quality changes rather than another dashboard nobody opens</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">Whisper (Large)</span><span class="tag" style="--i:2">Ollama</span><span class="tag" style="--i:3">NLP</span><span class="tag" style="--i:4">Sentiment Analysis</span><span class="tag" style="--i:5">Audio Processing</span><span class="tag" style="--i:6">Linux</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat"><b>20,000+</b> recordings/month</span>
+          <span class="project-stat"><b>700+</b> calls/day</span>
+          <span class="project-stat"><b>~90%</b> less manual effort</span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">🤖 AI-Powered Vendor Intelligence Platform</h3>
+          <span class="project-date">Feb 2025 — Jun 2025</span>
+        </div>
+        <p class="project-client">Client: Acads360 | Full-Stack AI Development</p>
+        <p class="project-copy">
+          B2B vendor selection meant analysts reading listings and PDFs by hand for days.
+          This platform automates the discovery-to-shortlist path with a multi-agent crew
+          that scrapes, reads and ranks vendors — processing 10,000+ listings and answering
+          questions directly from the documents vendors supply.
+        </p>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-spider" aria-hidden="true"></i><span>Multi-agent scraping and research orchestrated with CrewAI, so discovery scales past what a human analyst can read</span></div>
+          <div class="feature"><i class="fas fa-chart-line" aria-hidden="true"></i><span>Vendor ranking algorithm combining scraped signals with LLM analysis to produce a defensible shortlist, not just a list</span></div>
+          <div class="feature"><i class="fas fa-file-alt" aria-hidden="true"></i><span>Document intelligence with RAG across PDF, Word, Excel and CSV — questions answered from the vendor's own paperwork</span></div>
+          <div class="feature"><i class="fas fa-cloud" aria-hidden="true"></i><span>Deployed to production on AWS EC2 with Docker and CI/CD</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">CrewAI</span><span class="tag" style="--i:2">RAG</span><span class="tag" style="--i:3">LLMs</span><span class="tag" style="--i:4">AWS EC2</span><span class="tag" style="--i:5">Docker</span><span class="tag" style="--i:6">CI/CD</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat"><b>10K+</b> listings processed</span>
+          <span class="project-stat">Multi-format documents</span>
+          <span class="project-stat">Real-time analysis</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">🏥 Liver Disease MLOps — Registry to Kubernetes</h3>
+          <span class="project-date">End-to-end MLOps</span>
+        </div>
+        <p class="project-client">Healthcare ML | Full Lifecycle Ownership</p>
+        <p class="project-copy">
+          A model that only exists in a notebook helps nobody. This project takes
+          liver-disease prediction from raw patient records all the way to a monitored
+          service on Kubernetes — reaching 84% accuracy, with MLflow tracking every
+          experiment and a registry deciding which version is actually serving traffic.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/GundlapalliLokeswarRaju/LiverDiseasePrediction_mlops" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github" aria-hidden="true"></i> Source code
+          </a>
+        </div>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-flask" aria-hidden="true"></i><span>MLflow experiment tracking and model registry, so promoting a model is a recorded decision rather than a file copy</span></div>
+          <div class="feature"><i class="fas fa-dharmachakra" aria-hidden="true"></i><span>Containerised deployment on Kubernetes behind a FastAPI inference service</span></div>
+          <div class="feature"><i class="fas fa-gauge-high" aria-hidden="true"></i><span>Live monitoring with Prometheus and Grafana, so drift and latency are visible instead of discovered by a user</span></div>
+          <div class="feature"><i class="fas fa-diagram-project" aria-hidden="true"></i><span>Reproducible pipeline covering ingestion, preprocessing, training and evaluation</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">Scikit-learn</span><span class="tag" style="--i:2">MLflow</span><span class="tag" style="--i:3">FastAPI</span><span class="tag" style="--i:4">Docker</span><span class="tag" style="--i:5">Kubernetes</span><span class="tag" style="--i:6">Prometheus</span><span class="tag" style="--i:7">Grafana</span><span class="tag" style="--i:8">MLOps</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat"><b>84%</b> accuracy</span>
+          <span class="project-stat">Registry-gated releases</span>
+          <span class="project-stat">Monitored in production</span>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">🌐 Production Deployment — Two Live Platforms</h3>
+          <span class="project-date">2025</span>
+        </div>
+        <p class="project-client">BigEBrains Pvt. Ltd. | DevOps Engineering</p>
+        <p class="project-copy">
+          Owned the deployment of two customer-facing sites from a working codebase to a
+          live, secured production environment on AWS — both still serving traffic today.
+        </p>
+        <div class="project-links">
+          <a class="project-link" href="https://bigclasses.ai" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> bigclasses.ai
+          </a>
+          <a class="project-link" href="https://bigebrains.com" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> bigebrains.com
+          </a>
+        </div>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>bigclasses.ai — AI-focused education platform, live in production</span></div>
+          <div class="feature"><i class="fas fa-building" aria-hidden="true"></i><span>bigebrains.com — corporate site and business portal, live in production</span></div>
+          <div class="feature"><i class="fas fa-layer-group" aria-hidden="true"></i><span>React.js frontend against a Django backend, served through NGINX on AWS</span></div>
+          <div class="feature"><i class="fas fa-shield-alt" aria-hidden="true"></i><span>CI/CD pipelines replacing manual releases, in a secured and scalable environment</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">React.js</span><span class="tag" style="--i:1">Django</span><span class="tag" style="--i:2">AWS</span><span class="tag" style="--i:3">NGINX</span><span class="tag" style="--i:4">Docker</span><span class="tag" style="--i:5">CI/CD</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat"><b>2</b> live platforms</span>
+          <span class="project-stat">Automated releases</span>
+          <span class="project-stat">Still in production</span>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="stack-card" data-panel>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <div class="project-head">
+          <h3 class="project-title">🩺 Liver Disease Prediction — Team Lead</h3>
+          <span class="project-date">Academic Leadership</span>
+        </div>
+        <p class="project-client">Healthcare ML | Team of Engineers</p>
+        <p class="project-copy">
+          Led a student team building a liver-disease classifier on patient health records,
+          pairing a logistic-regression model with a visualisation dashboard that made the
+          predictions interpretable to non-technical reviewers.
+        </p>
+        <div class="project-features">
+          <div class="feature"><i class="fas fa-users" aria-hidden="true"></i><span>Led the team and owned project planning and delivery</span></div>
+          <div class="feature"><i class="fas fa-brain" aria-hidden="true"></i><span>Logistic regression model trained on clinical patient records</span></div>
+          <div class="feature"><i class="fas fa-chart-bar" aria-hidden="true"></i><span>Visualisation dashboard making predictions explainable rather than opaque</span></div>
+          <div class="feature"><i class="fas fa-heartbeat" aria-hidden="true"></i><span>Framed around early detection, where a false negative is the expensive error</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">Scikit-learn</span><span class="tag" style="--i:2">Pandas</span><span class="tag" style="--i:3">Data Visualisation</span><span class="tag" style="--i:4">Healthcare ML</span>
+        </div>
+        <div class="project-stats">
+          <span class="project-stat">Team leadership</span>
+          <span class="project-stat">Interpretable output</span>
+          <span class="project-stat">Early-detection focus</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Skills ══════════════════ -->
+<section class="section" id="skills">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>03 — Capabilities</p>
+      <h2 class="section-title" data-reveal style="--d:1">
+        The stack behind<br><em>the evidence.</em>
+      </h2>
+    </div>
+
+    <div class="skills-grid">
+      <article class="panel" data-panel data-reveal>
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-brain skill-icon" aria-hidden="true"></i>
+        <h3 class="panel-title">AI &amp; Machine Learning</h3>
+        <div class="skill-tags">
+          <span class="tag" style="--i:0">TensorFlow</span><span class="tag" style="--i:1">PyTorch</span><span class="tag" style="--i:2">Scikit-learn</span><span class="tag" style="--i:3">Neural Networks</span><span class="tag" style="--i:4">Deep Learning</span><span class="tag" style="--i:5">Predictive Modeling</span><span class="tag" style="--i:6">Data Analysis</span><span class="tag" style="--i:7">LLMs</span><span class="tag" style="--i:8">RAG</span><span class="tag" style="--i:9">NLP</span><span class="tag" style="--i:10">Whisper</span><span class="tag" style="--i:11">Ollama</span><span class="tag" style="--i:12">OpenAI Realtime API</span>
+        </div>
+      </article>
+
+      <article class="panel" data-panel data-reveal style="--d:1">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-code skill-icon" aria-hidden="true"></i>
+        <h3 class="panel-title">Programming Languages</h3>
+        <div class="skill-tags">
+          <span class="tag" style="--i:0">Python</span><span class="tag" style="--i:1">JavaScript</span><span class="tag" style="--i:2">C</span><span class="tag" style="--i:3">HTML</span><span class="tag" style="--i:4">CSS</span><span class="tag" style="--i:5">SQL</span>
+        </div>
+      </article>
+
+      <article class="panel" data-panel data-reveal style="--d:2">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-cloud skill-icon" aria-hidden="true"></i>
+        <h3 class="panel-title">Cloud &amp; DevOps</h3>
+        <div class="skill-tags">
+          <span class="tag" style="--i:0">AWS EC2</span><span class="tag" style="--i:1">AWS S3</span><span class="tag" style="--i:2">Docker</span><span class="tag" style="--i:3">NGINX</span><span class="tag" style="--i:4">CI/CD</span><span class="tag" style="--i:5">GitHub Actions</span>
+        </div>
+      </article>
+
+      <article class="panel" data-panel data-reveal style="--d:3">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-database skill-icon" aria-hidden="true"></i>
+        <h3 class="panel-title">Data &amp; Frameworks</h3>
+        <div class="skill-tags">
+          <span class="tag" style="--i:0">Pandas</span><span class="tag" style="--i:1">NumPy</span><span class="tag" style="--i:2">FastAPI</span><span class="tag" style="--i:3">Django</span><span class="tag" style="--i:4">React.js</span><span class="tag" style="--i:5">MySQL</span><span class="tag" style="--i:6">Git</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Experience ══════════════════ -->
+<section class="section" id="experience">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>04 — Experience</p>
+      <h2 class="section-title" data-reveal style="--d:1">
+        Three years of<br><em>shipping it.</em>
+      </h2>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-item" data-reveal>
+        <p class="timeline-date">Mar 2026 — Present</p>
+        <h3 class="timeline-title">AI Engineer</h3>
+        <p class="timeline-company">Brolly Software Solutions Pvt Ltd</p>
+        <p class="timeline-summary">
+          Building real-time conversational AI for regional-language learners — low-latency
+          voice pipelines, retrieval-grounded answers, and the production hardening that
+          lets them run unattended.
+        </p>
+        <ul class="timeline-list">
+          <li>Architected VoxFlow, a Telugu-first voice agent on FastAPI and the OpenAI Realtime API, reachable from both the browser (WebRTC) and ordinary phone lines (Plivo)</li>
+          <li>Built RAG pipelines over PDF/DOCX/TXT course material with a cached, change-detecting index, so answers cite real documents instead of being improvised</li>
+          <li>Engineered full-duplex audio — FFT-based voice activity detection, adaptive noise reduction, pipelined TTS and μ-law passthrough — to keep conversation latency low enough to interrupt</li>
+          <li>Hardened for production with fail-closed auth, per-IP rate limiting and CSP/HSTS middleware, backed by 152 tests at 90% coverage and Docker + GitHub Actions CI</li>
+        </ul>
+      </article>
+
+      <article class="timeline-item" data-reveal>
+        <p class="timeline-date">Sep 2025 — Mar 2026</p>
+        <h3 class="timeline-title">Freelance AI/ML Engineer</h3>
+        <p class="timeline-company">Independent Consultant</p>
+        <p class="timeline-summary">
+          Ran an independent AI automation practice, owning delivery end to end — problem
+          framing, build, deployment and ongoing support — for hospitality clients.
+        </p>
+        <ul class="timeline-list">
+          <li>Cut manual call monitoring effort by ~90% for luxury hotel groups by replacing human spot-checks with an automated transcription and sentiment pipeline</li>
+          <li>Automated 100% of call transcription at 700+ calls per day using Whisper (Large), handling multilingual audio without per-language tuning</li>
+          <li>Packaged the pipeline as a subscription AI product generating recurring revenue, rather than a one-off engagement</li>
+          <li>Delivered it into production across three hotel groups — Green Park, Avasa and Mari Gold — via Skillkoder</li>
+        </ul>
+      </article>
+
+      <article class="timeline-item" data-reveal>
+        <p class="timeline-date">Feb 2025 — Sep 2025</p>
+        <h3 class="timeline-title">Software Engineer</h3>
+        <p class="timeline-company">BigEBrains Pvt Ltd</p>
+        <p class="timeline-summary">
+          Led AI project delivery and deployment in an early-stage startup, pairing data
+          science work with the software engineering needed to get it live.
+        </p>
+        <ul class="timeline-list">
+          <li>Deployed two production websites — bigclasses.ai and bigebrains.com — on a React + Django stack behind NGINX on AWS</li>
+          <li>Implemented cloud deployment with AWS and Docker, replacing manual releases with reproducible builds</li>
+          <li>Set up CI/CD pipelines so deployments ran automatically instead of by hand</li>
+          <li>Led AI-based project development across a cross-functional team using Agile delivery</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Contact ══════════════════ -->
+<section class="section" id="contact">
+  <div class="shell">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>05 — Contact</p>
+      <h2 class="section-title" data-reveal style="--d:1">
+        Let's build something<br><em>that stays up.</em>
+      </h2>
+    </div>
+
+    <div class="contact-grid">
+      <a class="panel contact-card" data-panel data-reveal href="mailto:glokesh8374@gmail.com">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        <span class="contact-label">Email</span>
+        <span class="contact-value">glokesh8374@gmail.com</span>
+      </a>
+
+      <a class="panel contact-card" data-panel data-reveal style="--d:1" href="tel:+918374705188">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        <span class="contact-label">Phone</span>
+        <span class="contact-value">+91 8374705188</span>
+      </a>
+
+      <a class="panel contact-card" data-panel data-reveal style="--d:2" href="https://www.linkedin.com/in/lokeswar-raju-gundlapalli-58863022a/" target="_blank" rel="noopener noreferrer">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">Connect professionally</span>
+      </a>
+
+      <a class="panel contact-card" data-panel data-reveal style="--d:3" href="https://github.com/GundlapalliLokeswarRaju" target="_blank" rel="noopener noreferrer">
+        <span class="panel-glow" aria-hidden="true"></span>
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">View my code</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <div class="socials">
+      <a class="social" href="https://www.linkedin.com/in/lokeswar-raju-gundlapalli-58863022a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+      <a class="social" href="https://github.com/GundlapalliLokeswarRaju" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a class="social" href="mailto:glokesh8374@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+    </div>
+    <p class="footer-note">© 2026 Lokeswar Raju Gundlapalli</p>
+    <p class="footer-note">Built from scratch — hand-written HTML, CSS and JavaScript. No framework, no template. The site is the first work sample.</p>
+  </div>
+</footer>
+
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
 </html>

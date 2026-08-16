@@ -56,7 +56,6 @@
 }
 
 .timeline-item:hover {
-    transform: translateX(8px);
     box-shadow: var(--glass-shadow-lift);
 }
 

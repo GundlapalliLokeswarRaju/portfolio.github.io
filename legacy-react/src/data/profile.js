@@ -10,11 +10,25 @@
 export const profile = {
   name: 'Lokeswar Raju Gundlapalli',
   shortName: 'Lokeswar Raju',
+  /* Positioning line, read before the name. Three words because it has to land
+     in the glance before the six seconds start — and it indicts the notebook
+     portfolios this one is competing against without naming them. */
+  tagline: 'Production, not prototypes',
   role: 'AI Engineer — Real-Time Voice, LLMs & RAG',
   pageTitle: 'Lokeswar Raju Gundlapalli - AI Engineer',
+  /* Cut from five rendered lines to three. Every number and named system
+     survives — those are the evidence the tagline promises. What went was the
+     connective padding ("I build", "pipelines", "platform processing") and
+     "Docker", which the projects pages spell out in full anyway. */
   heroDescription:
-    'I build LLM and speech systems that run in production: a real-time Telugu voice agent on the OpenAI Realtime API, RAG pipelines grounded in real documents, and a call-analytics platform processing 20,000+ recordings a month. Shipped with Docker, CI, auth and 90% test coverage — not just notebooks.',
+    'Real-time Telugu voice agent on the OpenAI Realtime API, RAG grounded in real documents, call analytics over 20,000+ recordings a month — shipped with CI, auth and 90% test coverage.',
   photoAlt: 'Portrait of Lokeswar Raju Gundlapalli',
+  /* Closing line. It replaced "Ready to transform your business with AI?" —
+     which promised nothing, could have been written by anyone, and sat on
+     every page of a site whose whole argument is that claims come with
+     evidence. This one is checkable: the stack is in package.json and the
+     components are hand-written. */
+  footerNote: 'Built from scratch — React 19, Vite, no template. The site is the first work sample.',
 };
 
 export const contact = {
@@ -52,7 +66,9 @@ export const heroButtons = [
   {
     // Off-site, so a plain anchor rather than a router link.
     href: `mailto:${contact.email}`,
-    label: 'Hire Me Now',
+    /* Not "Hire Me Now": on a page whose whole argument is evidence, an eager
+       ask undercuts it. Understatement reads as the more confident position. */
+    label: 'Start a Conversation',
     icon: 'fas fa-paper-plane',
     variant: 'btn-tertiary-spec',
   },

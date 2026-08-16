@@ -27,6 +27,10 @@
 @import '../components/Contact.css';
 @import '../components/Footer.css';
 
+/* Shared card treatment (spotlight, border beam, tilt). After the component
+   files so its composed transform wins over their old hover rules. */
+@import './card-fx.css';
+
 /* Multi-page layout: header offset, active nav state, 404 */
 @import './pages.css';
 

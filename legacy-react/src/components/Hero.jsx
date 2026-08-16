@@ -58,8 +58,13 @@ export default function Hero() {
 
       <div className="hero-content">
         <img src={photo} alt={profile.photoAlt} className="hero-photo" width="210" height="210" />
+        <p className="hero-tagline">{profile.tagline}</p>
         <h1 className="hero-title">{profile.name}</h1>
-        <div className="ai-subtitle">{profile.role}</div>
+        {/* The step count is the role's own length, so the typewriter stays in
+            sync with the copy when the role is edited in data/profile.js. */}
+        <div className="ai-subtitle" style={{ '--role-chars': profile.role.length }}>
+          <span>{profile.role}</span>
+        </div>
         <p className="hero-description">{profile.heroDescription}</p>
 
         <div className="hero-buttons">
@@ -84,6 +89,14 @@ export default function Hero() {
           })}
         </div>
       </div>
+
+      {/* A full-viewport hero shows no edge, so nothing signals that the page
+          continues. A real anchor rather than a decorative chevron: it lands on
+          the same target a click would, works from the keyboard, and inherits
+          the smooth scroll and header offset already set in base.css. */}
+      <a href="#highlights" className="hero-scroll-cue" aria-label="Scroll to highlights">
+        <i className="fas fa-chevron-down" aria-hidden="true" />
+      </a>
 
       <div className="floating-code" aria-hidden="true">
         {floatingCode.map((line) => (

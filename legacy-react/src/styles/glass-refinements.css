@@ -156,6 +156,77 @@
 }
 
 /* --------------------------------------------------------------------------
+   2b. Hero — the one place text sits on the raw ground
+   --------------------------------------------------------------------------
+   Every other section reads its text off a frosted pane, which is what keeps
+   it legible: the pane is 45-62% white, so whatever the aurora is doing
+   underneath arrives already flattened toward the cream. The hero is the
+   exception — .hero-content has no pane by design, so .hero-description and
+   .ai-subtitle are the only body-sized text on the site sitting directly on
+   moving, saturated colour.
+
+   Measured against the cream ground alone that is fine. Measured where a blob
+   core drifts under the text column, it is not:
+
+       ground                        #6b6355 desc   accent subtitle
+       cream, no blob                    5.23:1          4.93:1
+       blob-1 teal core (a≈0.25)         3.69:1          3.48:1
+       blob-2 rust core (a≈0.21)         3.94:1          3.71:1
+       blob-3 green core (a≈0.23)        4.03:1          3.79:1
+
+   So the contrast is not a number, it is a range that dips under 4.5:1 on a
+   34-41s cycle — the text is compliant only while the blobs happen to be
+   elsewhere. The subtitle is worse off than it looks: --fs-subtitle floors at
+   1.05rem/600, well under the 18.66pt bold that would let it use the 3:1
+   large-text threshold, so it owes the full 4.5:1 at small viewports.
+
+   Fixing this by frosting .hero-content would answer it, but the hero not
+   having a pane IS the composition — it is what makes the tagline chip and the
+   secondary button read as glass in the first place. So: raise the floor
+   instead of adding a surface. A radial wash with no edge, no border and no
+   blur lightens the ground under the text column without ever resolving into a
+   pane, and costs one gradient rather than another backdrop-filter pass (see
+   §3 below on why another one of those is not free). */
+.hero-content {
+    /* z-index: 2 in Hero.css was inert — z-index does nothing on a static box,
+       so .ai-brain and .floating-code (positioned, z-index: 1) were painting
+       over the text rather than behind it. At 0.2-0.3 opacity that read as
+       faint grain on the copy instead of art beside it. Positioning the box
+       activates the z-index it was already asking for, and gives ::before
+       something to resolve -1 against. */
+    position: relative;
+}
+
+.hero-content::before {
+    content: '';
+    position: absolute;
+    /* Bleeds past the content box so the wash fades out past the text rather
+       than ending at it — an edge here is exactly what would read as a pane. */
+    inset: -10% -8%;
+    z-index: -1;
+    background: radial-gradient(62% 56% at 50% 45%,
+            rgba(255, 255, 255, 0.62) 0%,
+            rgba(255, 255, 255, 0.45) 42%,
+            rgba(255, 255, 255, 0.16) 70%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* With the wash in place the worst ground under the subtitle lifts the accent
+   to 4.71:1. The description does not get the benefit of the gradient's centre
+   — it sits below it, out at the 42% stop — so it also takes a darker ink:
+   #4f4940 holds 5.54:1 even on bare blob core, i.e. it stays compliant if the
+   wash is ever dropped. A token rather than a literal because a raw hex in a
+   component is how the next colour change misses one of them. */
+:root {
+    --text-on-ground: #4f4940;
+}
+
+.hero-description {
+    color: var(--text-on-ground);
+}
+
+/* --------------------------------------------------------------------------
    3. Blur cost on small screens
    --------------------------------------------------------------------------
    backdrop-filter is per-pixel and re-runs on every scroll frame. An 18px
@@ -204,5 +275,17 @@
 
     .bg-animation {
         animation: none;
+    }
+
+    /* The hero wash is the same bargain as the panes above: someone who has
+       asked for less transparency should not be the one person reading the
+       description at 3.7:1 because the wash was tuned to stay subtle. Push it
+       to near-solid and hold the fade so it still has no edge. */
+    .hero-content::before {
+        background: radial-gradient(72% 64% at 50% 45%,
+                rgba(255, 255, 255, 0.97) 0%,
+                rgba(255, 255, 255, 0.92) 52%,
+                rgba(255, 255, 255, 0.6) 78%,
+                transparent 100%);
     }
 }

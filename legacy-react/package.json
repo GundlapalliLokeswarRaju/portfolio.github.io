@@ -11,6 +11,7 @@
     "deploy": "vite build && gh-pages -d dist -m \"Deploy portfolio\""
   },
   "dependencies": {
+    "framer-motion": "^13.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.18.2"

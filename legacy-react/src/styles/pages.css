@@ -20,7 +20,7 @@
    supplies the header offset, subtract it here so hero + offset still comes to
    exactly one screen instead of overflowing by the header's height. */
 .page .hero {
-    padding-top: var(--space-lg);
+    padding-top: var(--space-md);
     min-height: calc(100vh - var(--header-h));
     min-height: calc(100svh - var(--header-h));
 }

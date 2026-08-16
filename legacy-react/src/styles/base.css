@@ -67,7 +67,11 @@
     --section-y: clamp(3.5rem, 8vw, 6rem);
 
     /* Fluid type — every size interpolates between a floor and a ceiling */
-    --fs-hero: clamp(2rem, 1.2rem + 4.2vw, 4.5rem);
+    /* Ceiling dropped from 4.5rem: at 72px the name wrapped to two lines inside
+       the 900px content column, and those two lines were the single biggest
+       item in a hero that overflowed the viewport by 412px. At 56px it sets on
+       one line and the hero fits the screen it claims to fill. */
+    --fs-hero: clamp(2rem, 1.2rem + 3.2vw, 3.5rem);
     --fs-section: clamp(1.85rem, 1.1rem + 3.4vw, 4rem);
     --fs-subtitle: clamp(1.05rem, 0.6rem + 2.1vw, 2rem);
     --fs-lead: clamp(1rem, 0.92rem + 0.5vw, 1.3rem);

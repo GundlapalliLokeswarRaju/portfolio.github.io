@@ -25,25 +25,8 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card-3d::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -100%;
-    width: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-    transition: left 1s ease;
-    pointer-events: none;
-}
-
 .project-card-3d:hover {
-    transform: translateY(-6px);
     box-shadow: 0 30px 60px rgba(122, 96, 61, 0.18), var(--glass-edge);
-}
-
-.project-card-3d:hover::before {
-    left: 100%;
 }
 
 .project-header {
@@ -144,6 +127,35 @@
     box-shadow: 0 6px 18px rgba(var(--accent2-rgb), 0.4);
 }
 
+/* Shimmer. A light bar crossing each tag once when the card is entered,
+   staggered by --i so the row reads left to right rather than flashing as a
+   block. overflow: hidden is what keeps the bar inside the pill. */
+.tech-tag-neon {
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-tag-neon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform: translateX(-120%);
+    background: linear-gradient(105deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.6) 50%,
+            transparent 65%);
+}
+
+.project-card-3d:hover .tech-tag-neon::after {
+    animation: tagShimmer 1.1s ease-out both;
+    animation-delay: calc(var(--i) * 0.06s);
+}
+
+@keyframes tagShimmer {
+    to { transform: translateX(120%); }
+}
+
 /* Auto-fitting stat row: 3 across on desktop, 2, then 1 — no breakpoints. */
 .project-stats {
     grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
@@ -161,5 +173,16 @@
     padding: 0.6rem 0.5rem;
     background: rgba(255, 255, 255, 0.55);
     border-radius: var(--r-sm);
+}
+
+/* The counted figure. tabular-nums is not cosmetic here: proportional digits
+   are different widths, so a number ticking through 8,412 -> 19,730 would
+   reflow the stat box on almost every frame. Tabular figures all occupy one
+   advance, so the box is still. */
+.stat-figure {
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    font-size: 1.15em;
+    color: var(--accent);
 }
 

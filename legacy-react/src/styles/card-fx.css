@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Card effects — spotlight, border beam, 3D tilt
+   --------------------------------------------------------------------------
+   One treatment shared by .project-card-3d, .skill-card-floating and
+   .timeline-item. Loaded after the component files so it wins on source order
+   at equal specificity.
+
+   The composition problem this file solves: all three cards already move on
+   hover, and each moves differently — the project card lifts, the skill card
+   lifts and scales, the timeline item slides right. A tilt rule that set
+   `transform` would clobber whichever of those it didn't know about, and the
+   skill card additionally runs a `float` animation, which beats any normal
+   declaration outright.
+
+   So nothing here sets a competing transform. Each card contributes its motion
+   as a *variable*, one rule composes all of them into a single transform, and
+   the float keeps its own lane on the independent `translate` property.
+   ========================================================================== */
+
+.fx-card {
+    position: relative;
+    /* Guarantees a stacking context regardless of what the card already does,
+       so .fx-spotlight's z-index: -1 resolves against the card rather than
+       escaping to an ancestor and hiding behind the page. */
+    isolation: isolate;
+
+    /* Per-card motion, overridden in the hover rules below. */
+    --fx-lift: 0px;
+    --fx-shift: 0px;
+    --fx-scale: 1;
+
+    /* Tilt is scaled per card because the same angle is not the same movement.
+       rotateY swings the near edge toward the viewer by roughly
+       half-width x sin(angle), magnified again by the perspective divide — so
+       5deg moves the edge of a 570px skill card a few pixels and the edge of an
+       1100px project card by nearly thirty. Wide cards get proportionally less
+       so the rotation stays a suggestion of depth rather than a swing. */
+    --fx-tilt: 1;
+}
+
+.fx-card:hover {
+    transform:
+        perspective(900px)
+        rotateX(calc(var(--tilt-x, 0deg) * var(--fx-tilt)))
+        rotateY(calc(var(--tilt-y, 0deg) * var(--fx-tilt)))
+        translate3d(var(--fx-shift), var(--fx-lift), 0)
+        scale(var(--fx-scale));
+}
+
+/* Long ease home, short ease under the pointer: the pointer-driven frames
+   overwrite each other continuously while hovering, so a slow curve there just
+   adds lag, whereas the release wants to settle rather than snap. */
+.fx-card {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.fx-card:hover {
+    transition-duration: 0.12s, 0.35s;
+}
+
+/* --------------------------------------------------------------------------
+   Spotlight
+   --------------------------------------------------------------------------
+   z-index: -1 puts it above the card's own background but below the in-flow
+   content, so the text is never washed over. */
+.fx-spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(340px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(var(--accent-rgb), 0.17),
+            rgba(var(--accent3-rgb), 0.09) 42%,
+            transparent 66%);
+}
+
+.fx-card:hover .fx-spotlight {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Border beam
+   --------------------------------------------------------------------------
+   A conic gradient rotated by an animated custom property, masked down to the
+   1px frame: two masks, one covering the whole box and one the content box,
+   excluded from each other, leave exactly the border ring.
+
+   The angle needs @property to animate — to an unregistered custom property the
+   interpolator sees a string, so it would jump 0 -> 360 with nothing between.
+   Browsers without @property render a static beam, which is a fine landing. */
+@property --beam {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.fx-beam {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    background: conic-gradient(from var(--beam),
+            transparent 0deg 296deg,
+            rgba(var(--accent-rgb), 0.85) 330deg,
+            rgba(var(--accent3-rgb), 0.95) 350deg,
+            transparent 360deg);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
+
+.fx-card:hover .fx-beam {
+    opacity: 1;
+    animation: beamSweep 3.6s linear infinite;
+}
+
+@keyframes beamSweep {
+    to { --beam: 360deg; }
+}
+
+/* --------------------------------------------------------------------------
+   Per-card motion
+   --------------------------------------------------------------------------
+   Each card says how far it moves; the shared rule above composes it with the
+   tilt. These replace the transforms that used to live in the component files.
+   -------------------------------------------------------------------------- */
+
+.project-card-3d { --fx-tilt: 0.5; }
+.project-card-3d:hover { --fx-lift: -6px; }
+
+.skill-card-floating:hover {
+    --fx-lift: -12px;
+    --fx-scale: 1.02;
+}
+
+/* Lowest of the three: .timeline-item::before is the dot on the spine, so it
+   rotates with the card. Past about this much the dot visibly detaches from the
+   line it is supposed to be pinned to. */
+.timeline-item { --fx-tilt: 0.35; }
+.timeline-item:hover { --fx-shift: 8px; }
+
+/* --------------------------------------------------------------------------
+   Fallbacks
+   --------------------------------------------------------------------------
+   Tilt and spotlight are pointer affordances, so they are switched off at
+   source in the components (the hook returns a bare ref) when reduced motion is
+   set. What remains here is the beam, which utilities.css already reduces to a
+   single 0.01ms run — landing it on a static illuminated edge. */
+@media (prefers-reduced-motion: reduce) {
+    .fx-card {
+        transition: none;
+    }
+}
+
+/* Touch has no pointer to track. The variables simply never get written, so the
+   card falls back to its lift/shift with no tilt — but the beam is still a
+   full-surface composite on the hardware least able to pay for it. */
+@media (hover: none) {
+    .fx-beam {
+        display: none;
+    }
+}

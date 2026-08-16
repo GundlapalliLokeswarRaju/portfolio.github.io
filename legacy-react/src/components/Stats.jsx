@@ -23,8 +23,10 @@ function StatCard({ icon, count, label, animate }) {
 export default function Stats() {
   const reduced = useReducedMotion();
 
+  // id is the hero scroll cue's target — the cue is the "what's next" signal
+  // for a hero that otherwise fills the viewport with no edge showing.
   return (
-    <Section className="stats-section">
+    <Section id="highlights" className="stats-section">
       <div className="stats-grid">
         {stats.map((stat) => (
           <StatCard key={stat.label} {...stat} animate={!reduced} />

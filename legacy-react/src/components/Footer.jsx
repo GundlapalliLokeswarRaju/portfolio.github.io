@@ -21,9 +21,7 @@ export default function Footer() {
         </div>
 
         <p>&copy; {YEAR} {profile.name}. Crafted with ❤️ and AI</p>
-        <p className="footer-tagline">
-          Ready to transform your business with AI? Let&apos;s make it happen! 🚀
-        </p>
+        <p className="footer-tagline">{profile.footerNote}</p>
       </div>
     </footer>
   );

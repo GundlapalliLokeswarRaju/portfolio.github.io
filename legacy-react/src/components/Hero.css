@@ -1,0 +1,392 @@
+/* ==========================================================================
+   6. Hero
+   ========================================================================== */
+
+.hero {
+    /* svh accounts for mobile browser chrome; vh is the fallback. */
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    /* Content takes the free space and centres inside it; the scroll cue gets
+       its own track underneath. The cue used to be positioned against the
+       hero's bottom edge, which is only the viewport's bottom edge while the
+       content fits — at 1280x720 the buttons wrap to two rows, the hero grows
+       past 100svh, and the cue was landing off-screen on top of them. A row of
+       its own cannot overlap what it follows. */
+    grid-template-rows: 1fr auto;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(var(--header-h) + var(--space-sm));
+    padding-bottom: var(--space-sm);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    z-index: 2;
+}
+
+.hero-photo {
+    /* 210px was a quarter of the hero's height on a laptop. The portrait is
+       corroboration, not the argument — it does its job at 135. */
+    width: clamp(110px, 13vw, 135px);
+    aspect-ratio: 1;
+    /* The width/height attributes on the <img> reserve space against layout
+       shift, but height="210" also lands as a presentational hint — and once
+       both dimensions are specified, aspect-ratio is ignored. That left the
+       portrait an oval at every width below the clamp ceiling, square only at
+       full size where 18vw happens to reach 210px. height: auto hands the
+       height back to aspect-ratio without giving up the attributes. */
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto var(--space-sm);
+    border: 4px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 12px 40px rgba(var(--accent-rgb), 0.28);
+    animation: profilePulse 4s ease-in-out infinite;
+}
+
+/* Positioning line above the name. A chip rather than plain text so it holds
+   its own against the gradient title below it — and blurred, because the hero
+   sits directly on the page ground, not on an already-frosted pane. */
+.hero-tagline {
+    display: inline-block;
+    margin: 0 auto var(--space-sm);
+    padding: 0.4rem 1rem;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
+    border-radius: var(--r-pill);
+    box-shadow: var(--glass-shadow);
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.hero-title {
+    font-size: var(--fs-hero);
+    font-weight: 900;
+    margin-bottom: var(--space-xs);
+    background: var(--gradient-title);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleAnimation 2s ease-out, titleGlow 4s ease-in-out infinite, gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes titleAnimation {
+    0% { opacity: 0; transform: translateY(50px) scale(0.8); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes titleGlow {
+    0%, 100% { filter: drop-shadow(0 4px 12px rgba(var(--accent-rgb), 0.14)); }
+    50% { filter: drop-shadow(0 6px 22px rgba(var(--accent-rgb), 0.3)); }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Typewriter. The reveal animates a grid track from 0fr to 1fr rather than a
+   width from 0 to a fixed length, because 1fr resolves to the text's own
+   max-content width — so the cursor stops exactly at the last glyph no matter
+   what the role string says or how wide the fluid font renders.
+
+   It used to animate to a hard-coded 23ch, measured for "AI Engineer & ML
+   Expert". The role has since grown to 41 characters, and everything past
+   "Real-Time Voice," was being clipped off. ch is the width of "0", which in a
+   proportional face runs ~25% wider than the average letter, so no character
+   count expressed in ch lands on the end of the text either. */
+.ai-subtitle {
+    display: inline-grid;
+    grid-template-columns: 0fr;
+    font-size: var(--fs-subtitle);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+    max-width: 100%;
+    border-right: 3px solid var(--accent);
+    /* Step count comes from the role's length, set inline by Hero.jsx — the
+       one number that has to track the copy, taken from the copy itself. */
+    animation: typewriter 3s steps(var(--role-chars)) 0.5s forwards;
+}
+
+/* min-width: 0 because a grid item refuses to shrink below min-content without
+   it, which would leave the text sticking out of a zero-width track. */
+.ai-subtitle > span {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@keyframes typewriter {
+    0% { grid-template-columns: 0fr; }
+    100% { grid-template-columns: 1fr; border-right-color: transparent; }
+}
+
+/* Under ~480px the role needs more width than the viewport has at any size the
+   fluid scale produces — measured, it wants 390px inside 378px at 414px wide,
+   and it only gets worse from there. A one-line typewriter can do nothing with
+   that but clip. Wrap the line and drop the effect: the specialism is worth
+   more than the flourish. */
+@media (max-width: 30rem) {
+    .ai-subtitle {
+        display: block;
+        animation: none;
+        border-right: none;
+    }
+
+    .ai-subtitle > span {
+        overflow: visible;
+        white-space: normal;
+    }
+}
+
+.hero-description {
+    font-size: var(--fs-lead);
+    color: var(--text-light);
+    margin: 0 auto var(--space-lg);
+    max-width: 700px;
+    /* 1.8 was above the 1.5-1.75 band that reads best for body copy, and over
+       several lines the extra leading was pure height. */
+    line-height: 1.65;
+    animation: fadeInUp 1s ease-out 1s both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease-out 1.5s both;
+}
+
+.btn-spectacular {
+    position: relative;
+    /* Trimmed so all three fit one row from ~1100px up — the second row cost
+       the hero ~78px, more than the buttons themselves are worth. The 44px
+       touch-target floor still holds: 0.85rem padding plus a ~1rem line box
+       clears it. */
+    padding: 0.85rem clamp(1rem, 2vw, 1.6rem);
+    font-size: clamp(0.85rem, 0.8rem + 0.2vw, 0.95rem);
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary-spec {
+    background: var(--gradient-main);
+    color: #fff;
+    box-shadow: var(--glow);
+}
+
+.btn-primary-spec:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--glow-strong);
+}
+
+.btn-secondary-spec {
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    color: var(--accent);
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    box-shadow: var(--glass-shadow);
+    z-index: 0;
+}
+
+.btn-secondary-spec::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    background: var(--gradient-main);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn-secondary-spec:hover::before {
+    left: 0;
+}
+
+.btn-secondary-spec:hover {
+    color: #fff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--glow);
+}
+
+.btn-tertiary-spec {
+    background: var(--gradient-secondary);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(var(--accent2-rgb), 0.25);
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 8px 24px rgba(var(--accent2-rgb), 0.25); }
+    50% { box-shadow: 0 12px 34px rgba(var(--accent2-rgb), 0.45); }
+}
+
+.btn-tertiary-spec:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(var(--accent2-rgb), 0.4);
+}
+
+/* Scroll cue. Sits outside .hero-content, so it gets none of the radial wash
+   that lifts the copy off the aurora — accent ink on a bare blob core is
+   3.48:1. It carries its own glass instead, the same pill treatment as
+   .hero-tagline, which puts it back at 4.71:1.
+
+   Centred by the hero's own `place-items: center` rather than a centring
+   transform, which matters because the transform property has to stay free for
+   the animations below — a centring transform is the first thing a keyframe
+   silently overwrites. */
+.hero-scroll-cue {
+    margin-top: var(--space-xs);
+    z-index: 2;
+    /* 44px is the floor for a touch target, and this one is a lone control
+       near the bottom edge where thumbs are least accurate. */
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-size: 1rem;
+    text-decoration: none;
+    background: var(--glass-strong);
+    backdrop-filter: var(--glass-blur-sm);
+    -webkit-backdrop-filter: var(--glass-blur-sm);
+    border: 1px solid rgba(var(--accent-rgb), 0.28);
+    border-radius: 50%;
+    box-shadow: var(--glass-shadow);
+    /* Enters last, after the buttons at 1.5s have landed — a cue to keep
+       reading only makes sense once there is something to have read. */
+    animation:
+        fadeInUp 0.8s ease-out 2s both,
+        scrollNudge 2.4s ease-in-out 2.8s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+/* The global a:focus-visible rule squares the ring off to a 4px radius, which
+   on a circle reads as a rounded box floating around it. Same ring, right
+   shape — the class beats the element selector on specificity. */
+.hero-scroll-cue:focus-visible {
+    border-radius: 50%;
+}
+
+.hero-scroll-cue:hover {
+    transform: translateY(3px);
+    box-shadow: var(--glass-shadow-lift);
+}
+
+/* Down and back, not a bounce: the gesture it is describing is a scroll, and
+   the pause at the top is what keeps it from reading as a loading spinner. */
+@keyframes scrollNudge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+/* Decorative hero art — only shown where there is room beside the content. */
+.ai-brain {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    transform: translateY(-50%);
+    width: clamp(180px, 20vw, 300px);
+    aspect-ratio: 1;
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.brain-node {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: var(--glow);
+    animation: brainPulse 2s infinite;
+}
+
+.brain-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    animation: dataFlow 3s infinite;
+}
+
+@keyframes brainPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes dataFlow {
+    0% { opacity: 0; transform: scaleX(0); }
+    50% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0; transform: scaleX(0); }
+}
+
+.floating-code {
+    position: absolute;
+    left: 5%;
+    top: 28%;
+    opacity: 0.2;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.code-line {
+    font-family: 'Courier New', monospace;
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    white-space: nowrap;
+    animation: codeFloat 4s ease-in-out infinite;
+    filter: blur(0.5px);
+}
+
+.code-line:nth-child(2) { animation-delay: 1s; }
+.code-line:nth-child(3) { animation-delay: 2s; }
+
+@keyframes codeFloat {
+    0%, 100% { transform: translateX(0) rotate(0deg); opacity: 0.2; }
+    50% { transform: translateX(20px) rotate(1deg); opacity: 0.4; }
+}
+
+/* Hide the hero art before it can collide with the text column. */
+@media (max-width: 1200px) {
+    .ai-brain,
+    .floating-code {
+        display: none;
+    }
+}
+

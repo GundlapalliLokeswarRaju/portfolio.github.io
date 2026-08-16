@@ -1,76 +1,80 @@
 # Portfolio — Lokeswar Raju Gundlapalli
 
-AI Engineer portfolio built with **React 19 + Vite**, styled with a glassmorphism
-design system (warm cream base, frosted white panes, jewel-tone accents).
+AI Engineer portfolio. Hand-written HTML, CSS and JavaScript — no framework, no
+build step, no dependencies. Cinematic dark design: near-black ground with film
+grain, Cormorant Garamond display type, and a scroll-stacking work section.
 
 Live: https://gundlapallilokeswarraju.github.io/portfolio.github.io/
 
 ## Running it
 
+There is nothing to install and nothing to compile. Open `index.html`, or serve
+the folder if you want correct relative paths and no `file://` quirks:
+
 ```bash
-npm install
-npm run dev      # dev server with hot reload
-npm run build    # production build into dist/
-npm run preview  # serve the production build locally
-npm run deploy   # build and publish to the gh-pages branch
+python -m http.server 4200   # then visit http://localhost:4200/
 ```
+
+Deploying is a `git push` — GitHub Pages serves these files as they are.
 
 ## Layout
 
 ```
-index.html              Vite entry — mounts #root, loads Font Awesome
-src/
-  main.jsx              React root; imports the one stylesheet manifest
-  App.jsx               Page composition
-  components/           One .jsx + one .css per section
-  data/                 All page copy — edit content here, not in components
-  hooks/                Scroll, reveal, counter and motion-preference logic
-  styles/
-    index.css           Stylesheet manifest (import order = cascade order)
-    base.css            Design tokens, reset, layout primitives
-    glass-refinements.css
-    utilities.css       Focus rings, fallbacks, motion prefs, print
-.github/workflows/      GitHub Pages deploy
+index.html              The whole page. All copy lives here.
+assets/
+  css/styles.css        Design tokens, then sections in page order,
+                        then overlays and preferences last.
+  js/main.js            Six independent behaviours (see below).
+  img/lokesh.jpeg       Portrait.
+legacy-react/           The previous React 19 + Vite version, kept for
+                        reference. Nothing in the live site reads from it;
+                        delete it whenever you like.
 ```
 
-### Editing content
+## The JavaScript
 
-Text, projects, skills and jobs live in `src/data/`. Adding a project is one
-object in `src/data/projects.js` — no component changes.
+`assets/js/main.js` is one IIFE with six features, each guarded so a browser
+missing any API loses that feature alone. Everything motion-related checks
+`prefers-reduced-motion` first and simply does not initialise.
 
-### Styling
+| Feature | What it does |
+|---|---|
+| Reveal | Fades and unblurs sections as they reach a trigger line |
+| Counters | Counts the headline figures up on first sight |
+| Scroll stack | Feeds each project card its `--p` progress; CSS scales and dims |
+| Spotlight | Publishes pointer position per panel; CSS draws the glow |
+| Cursor | Dot tracks exactly, ring lags behind it |
+| Nav | Condenses on scroll, marks the active section, drives the mobile menu |
 
-`src/styles/index.css` imports every stylesheet in a fixed order, and **that
-order is the cascade**. Component files do not import their own CSS, so the
-cascade can't be reordered by accident when refactoring imports.
+All six share **one** rAF-throttled scroll listener. Six separate listeners each
+doing their own layout reads is how a page ends up janky.
 
-The glass surfaces are driven by tokens in `base.css` (`--glass`,
-`--glass-blur`, `--glass-shadow`, …). Change the frost everywhere by changing
-those, not by editing individual rules.
+### Two decisions worth knowing about
 
-Inner panes (skill tags, contact tiles) deliberately carry **no**
-`backdrop-filter` — they sit on top of already-frosted parents, where a second
-blur drains the colour and costs a full extra GPU pass per element. See
-`glass-refinements.css`.
+**Reveals compare against a trigger line rather than using an
+IntersectionObserver.** An observer only fires when the intersection ratio
+crosses a threshold, so an element that is *skipped over* never fires at all —
+press End, drag the scrollbar, or open `#contact` directly, and every section in
+between goes from below the viewport to above it without ever being on screen.
+Anything gated on that observer then stays hidden permanently. Asking "is it at
+or past the line" is true whether it was scrolled to or jumped past.
 
-## Deployment
+**The checks also re-run on `load` and on `document.fonts.ready`, not only on
+scroll.** The first evaluation happens while the web fonts are still swapping
+and the portrait has not decoded; both move content down. Without those extra
+passes, an element that crosses the line a beat later waits for a scroll event
+that may never come — which is exactly how the hero buttons ended up stranded at
+`opacity: 0` for anyone who landed and did not scroll.
 
-```bash
-npm run deploy
-```
+## Editing content
 
-Builds into `dist/` and force-pushes it to the **`gh-pages`** branch, which is
-what GitHub Pages serves. Deploys are manual — nothing publishes on push to
-`main`, so you can commit work in progress freely.
+Everything is in `index.html`. There is no data layer to keep in sync — the
+trade for having no build step is that the copy lives in the markup.
 
-One-time setup, under **Settings → Pages → Build and deployment**:
+## Accessibility
 
-- Source: **Deploy from a branch**
-- Branch: **`gh-pages`** / **`/ (root)`**
-
-`main` holds the source; `gh-pages` holds only build output and is rewritten on
-every deploy — never commit to it by hand.
-
-`vite.config.js` sets `base: '/portfolio.github.io/'` because this is a Pages
-*project* site. If you move to a custom domain or a `<username>.github.io`
-repo, change `base` to `'/'`.
+Skip link, visible focus rings, labelled icon buttons, `aria-hidden` on
+decoration, and 44px minimum touch targets. `prefers-reduced-motion` disables
+the tilt, cursor, stack compression and grain, and lands every reveal open so
+nothing can be stranded invisible. `prefers-reduced-transparency` swaps the
+translucent panels for solid ones. There is a print stylesheet.
