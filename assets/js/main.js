@@ -284,7 +284,44 @@
   }
 
   /* ------------------------------------------------------------------------
-     6. Navigation — condensed bar, scroll spy, mobile menu
+     6. Hero video
+     ------------------------------------------------------------------------
+     Inert until a <video> is actually present in the markup, so this costs
+     nothing while the hero is a still.
+
+     The element is only revealed once the browser reports it can play. A
+     missing file, an unsupported codec or a stalled network therefore all
+     resolve to the photograph underneath rather than to a black rectangle —
+     the fallback is the thing that was already on screen.
+
+     Under reduced motion it is never started at all. Autoplaying footage is
+     precisely what that preference exists to prevent, and the still already
+     says everything the video would. */
+  function initHeroVideo() {
+    var video = document.querySelector('.hero-media-video');
+    if (!video || reduced) return;
+
+    function show() {
+      video.classList.add('is-playing');
+    }
+
+    video.addEventListener('canplay', show);
+    // readyState >= 3 means canplay already fired before this listener attached.
+    if (video.readyState >= 3) show();
+
+    /* Autoplay can still be refused — some power-saving modes block it even for
+       muted video. play() rejects there, and leaving the still in place is the
+       correct outcome, so the rejection is swallowed deliberately. */
+    var attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') {
+      attempt.catch(function () {
+        video.classList.remove('is-playing');
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------------
+     7. Navigation — condensed bar, scroll spy, mobile menu
      ------------------------------------------------------------------------ */
   function initNav() {
     var nav = document.getElementById('nav');
@@ -348,6 +385,7 @@
     initStack();
     initSpotlight();
     initCursor();
+    initHeroVideo();
     initNav();
     window.addEventListener('scroll', scheduleScroll, { passive: true });
     window.addEventListener('resize', scheduleScroll);

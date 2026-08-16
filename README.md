@@ -66,6 +66,41 @@ passes, an element that crosses the line a beat later waits for a scroll event
 that may never come — which is exactly how the hero buttons ended up stranded at
 `opacity: 0` for anyone who landed and did not scroll.
 
+## Swapping the hero still for video
+
+The hero is built so footage drops in without a redesign. The CSS grades, masks
+and feathers a `<video>` exactly as it does the `<img>`.
+
+1. Put the file at `assets/video/hero.mp4`.
+2. In `index.html`, find the `── Video slot ──` comment in the hero and remove
+   the two comment markers around the `<video>` block inside it.
+
+That is the whole change. Encode with:
+
+```bash
+ffmpeg -i raw.mov -t 12 -an -vf "scale=720:-2" \
+       -c:v libx264 -crf 26 -pix_fmt yuv420p -movflags +faststart \
+       assets/video/hero.mp4
+```
+
+`-an` strips the audio track — it is never heard and it is dead weight.
+`+faststart` moves the index to the front so playback can begin before the file
+finishes downloading. Aim under ~2 MB. **A seamless loop matters more than
+length:** 8–12 seconds that return to where they started beats 30 seconds with a
+visible cut.
+
+### Why the still stays in the markup
+
+It is the poster, the buffering frame, the 404 fallback, the unsupported-codec
+fallback, and what shows under `prefers-reduced-motion` — where playback is
+deliberately never started. The video sits on top at `opacity: 0` and only fades
+in once the browser fires `canplay`. Every failure mode therefore lands on the
+photograph, which is already loaded and already correct, rather than on a black
+rectangle.
+
+**Leave the block commented until the file exists.** An active `<video>` with a
+missing source puts a 404 in every visitor's console.
+
 ## Editing content
 
 Everything is in `index.html`. There is no data layer to keep in sync — the

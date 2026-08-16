@@ -61,6 +61,33 @@
        600px source can hold without going soft. -->
   <figure class="hero-media">
     <img src="assets/img/lokesh.jpeg" alt="Portrait of Lokeswar Raju Gundlapalli" width="600" height="600" fetchpriority="high">
+
+    <!-- ── Video slot ───────────────────────────────────────────────────────
+         To use footage instead of the still: drop the file at
+         assets/video/hero.mp4 and delete the two comment markers around the
+         <video> block below. Nothing else changes — the CSS already grades,
+         masks and feathers a <video> exactly as it does the <img>.
+
+         The still stays in the markup on purpose. It is the poster, it is what
+         shows while the video buffers, it is what shows if the file 404s or the
+         codec is unsupported, and it is what shows under reduced motion — where
+         main.js deliberately never starts playback. The video only fades in
+         once the browser reports it can actually play.
+
+         Encoding it (ffmpeg):
+           ffmpeg -i raw.mov -t 12 -an -vf "scale=720:-2" \
+                  -c:v libx264 -crf 26 -pix_fmt yuv420p -movflags +faststart \
+                  assets/video/hero.mp4
+         -an strips the audio track: it is never heard and it is dead weight.
+         Aim under ~2 MB. A seamless loop matters more than length — 8-12s of
+         motion that returns to where it started beats 30s with a visible cut.
+
+         <video class="hero-media-video" muted loop playsinline preload="metadata"
+                poster="assets/img/lokesh.jpeg" aria-hidden="true">
+           <source src="assets/video/hero.mp4" type="video/mp4">
+         </video>
+         ──────────────────────────────────────────────────────────────────── -->
+
     <span class="hero-media-tint" aria-hidden="true"></span>
   </figure>
   <div class="hero-media-blend" aria-hidden="true"></div>

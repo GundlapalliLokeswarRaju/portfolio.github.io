@@ -465,6 +465,36 @@ ul {
     to { scale: 1.09; translate: -2% 1.5%; }
 }
 
+/* Video, when there is one. Same box, same grade, same mask as the still — so
+   swapping footage in is a markup change and not a design change.
+
+   Stacked over the image rather than replacing it, and transparent until
+   main.js confirms the browser can actually play it. That way a missing file,
+   an unsupported codec, a slow connection or a reduced-motion preference all
+   land on the same place: the photograph, already loaded and already correct. */
+.hero-media-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s var(--ease);
+    filter: grayscale(1) contrast(1.2) brightness(0.72);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 55% 42%, #000 38%, transparent 76%);
+    mask-image: radial-gradient(ellipse 70% 70% at 55% 42%, #000 38%, transparent 76%);
+}
+
+.hero-media-video.is-playing {
+    opacity: 1;
+}
+
+/* The still's own drift is the video's understudy. Once footage is playing the
+   footage supplies the motion, so the Ken Burns underneath it stops. */
+.hero-media:has(.hero-media-video.is-playing) img {
+    animation: none;
+}
+
 /* Teal cast over the greyscale, so the portrait sits in the same two-accent
    world as everything else rather than being the one neutral object. */
 .hero-media-tint {
