@@ -59,7 +59,23 @@
     }
 
     function check() {
-      var line = window.innerHeight * 0.92;
+      /* 0.92 of the viewport, so content settles slightly before the reader's
+         eye arrives — but only once scrolling is the thing revealing it.
+
+         While the page is still at the top the line is the full viewport
+         height. Anything on the first screen has to be visible whether or not
+         the reader ever scrolls, and the tighter line does not know that: it
+         left the hero buttons at opacity 0 thirteen pixels below the cut, on a
+         page with no reason to scroll. Being strict about the last 8% of the
+         opening screen buys nothing and can strand content permanently.
+
+         Keyed to scroll position rather than a "first run" flag on purpose —
+         this function runs several times before the reader touches anything
+         (initial, load, fonts ready), and a flag would burn itself on the
+         earliest of those, which is the one pass whose layout is least
+         settled. */
+      var line = window.innerHeight * (window.scrollY === 0 ? 1 : 0.92);
+
       for (var i = items.length - 1; i >= 0; i--) {
         if (items[i].getBoundingClientRect().top <= line) {
           items[i].classList.add('is-in');

@@ -56,6 +56,15 @@
 
 <!-- ══════════════════ Hero ══════════════════ -->
 <section class="hero" id="top">
+  <!-- Media layer, bleeding off the right edge and feathered into the ground
+       so it has no frame — the reference's video composition, at a size this
+       600px source can hold without going soft. -->
+  <figure class="hero-media">
+    <img src="assets/img/lokesh.jpeg" alt="Portrait of Lokeswar Raju Gundlapalli" width="600" height="600" fetchpriority="high">
+    <span class="hero-media-tint" aria-hidden="true"></span>
+  </figure>
+  <div class="hero-media-blend" aria-hidden="true"></div>
+
   <div class="shell">
     <div class="hero-grid">
       <div>
@@ -85,17 +94,9 @@
         </div>
       </div>
 
-      <figure class="hero-portrait" data-reveal style="--d:3">
-        <span class="hero-portrait-rule" aria-hidden="true"></span>
-        <img src="assets/img/lokesh.jpeg" alt="Portrait of Lokeswar Raju Gundlapalli" width="420" height="560" fetchpriority="high">
-      </figure>
     </div>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <span class="hero-scroll-line"></span>
-    Scroll
-  </div>
 </section>
 
 <!-- ══════════════════ Stats ══════════════════ -->
