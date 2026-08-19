@@ -17,6 +17,12 @@ python -m http.server 4200   # then visit http://localhost:4200/
 
 Deploying is a `git push` — GitHub Pages serves these files as they are.
 
+Pages is configured as **Deploy from a branch → `main` / `(root)`**, so a push to
+`main` is the whole deploy. There was briefly a `gh-pages` branch holding a build
+of the old React version; while it existed Pages served *that* instead, which is
+how a finished rebuild sat unpublished for five days. If the live site ever stops
+matching `main`, check that setting first.
+
 ## Layout
 
 ```
