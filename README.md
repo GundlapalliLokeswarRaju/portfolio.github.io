@@ -21,15 +21,39 @@ Deploying is a `git push` — GitHub Pages serves these files as they are.
 
 ```
 index.html              The whole page. All copy lives here.
+resume.html             The CV, laid out for A4 print (see below).
+robots.txt              Allows everything; points at the sitemap.
+sitemap.xml             The one indexable URL. resume.html is noindex.
 assets/
   css/styles.css        Design tokens, then sections in page order,
                         then overlays and preferences last.
+  css/resume.css        The CV only. Print-first, deliberately plain.
   js/main.js            Six independent behaviours (see below).
   img/lokesh.jpeg       Portrait.
 legacy-react/           The previous React 19 + Vite version, kept for
                         reference. Nothing in the live site reads from it;
                         delete it whenever you like.
 ```
+
+## Icons
+
+38 icons, inlined as `<symbol>` definitions in a hidden `<svg class="sprite">` at
+the top of `<body>`, drawn with `<svg class="icon"><use href="#i-name"></use></svg>`.
+
+They used to be Font Awesome from a CDN, which meant ~100KB of render-blocking
+third-party CSS plus a webfont for 38 glyphs — on a page with no other
+dependencies. Inlined they cost ~20KB in `index.html` (~7KB gzipped), no request
+and no third party.
+
+`.icon` is sized `width: 1em; height: 1em; fill: currentColor`, so an icon still
+takes its size from the `font-size` of its context and its colour from the
+surrounding text — exactly as it behaved when it was a font glyph. That is why
+rules like `.feature .icon` still set `font-size`.
+
+Artwork is Font Awesome Free 7.3.1, [CC BY 4.0](https://fontawesome.com/license/free).
+To add one: install `@fortawesome/fontawesome-free`, copy the `<path>` out of
+`svgs/solid/<name>.svg` into a new `<symbol id="i-<name>">` keeping that file's
+own `viewBox`, then reference it. Nothing needs rebuilding.
 
 ## The JavaScript
 
@@ -101,6 +125,53 @@ rectangle.
 **Leave the block commented until the file exists.** An active `<video>` with a
 missing source puts a 404 in every visitor's console.
 
+## The CV
+
+The CV is a PDF — `Lokeswar_Raju_Resume.pdf` in the repo root. `resume.html` is
+only a frame around it: a header with a **Download PDF** button, and the document
+itself embedded below.
+
+### Updating it
+
+```
+1. Export your new CV over the top of Lokeswar_Raju_Resume.pdf  (same filename)
+2. git add Lokeswar_Raju_Resume.pdf && git commit -m "Update CV" && git push
+```
+
+That is the whole process — no HTML or CSS is touched. **The filename is the
+contract.** `resume.html` references it in six places, so a PDF exported as
+`Resume_v3_final.pdf` does not "just work"; it leaves the page pointing at a file
+that is no longer there. Always overwrite, never add alongside.
+
+Two things worth knowing:
+
+- **It is not live until it is pushed.** Overwriting the local file changes
+  nothing for a recruiter. GitHub Pages serves what is in the repo, and then
+  caches it for around ten minutes, so allow a few minutes after the push before
+  concluding the old one is stuck.
+- **The download filename is set separately.** The `download` attribute renames
+  the file as it lands in the reader's Downloads folder — currently
+  `Lokeswar_Raju_Gundlapalli_AI_Engineer_CV.pdf`, which is more use to a
+  recruiter sorting a folder of attachments than whatever the repo file is
+  called. That one string is in `resume.html` and is the only thing there you may
+  want to edit.
+
+### Why `<object>` and not `<iframe>`
+
+When a browser cannot render a PDF inline, `<object>` renders its child content
+instead — so the page falls back to a real download prompt with contact details.
+An `<iframe>` in the same situation shows an empty frame, and the reader concludes
+the CV is broken. That fallback is not an edge case: it is most mobile browsers,
+which is a large share of the people who open a link like this.
+
+### Keeping it honest
+
+The PDF, the visible copy in `index.html`, and the `knowsAbout` list in the
+JSON-LD block should all state the same facts — same job titles, same dates, same
+grades. A recruiter reads the page and the CV side by side, and a contradiction
+between them is more damaging than either version's weaknesses. When you change
+the PDF, re-read the site against it.
+
 ## Editing content
 
 Everything is in `index.html`. There is no data layer to keep in sync — the
@@ -113,3 +184,8 @@ decoration, and 44px minimum touch targets. `prefers-reduced-motion` disables
 the tilt, cursor, stack compression and grain, and lands every reveal open so
 nothing can be stranded invisible. `prefers-reduced-transparency` swaps the
 translucent panels for solid ones. There is a print stylesheet.
+
+A `<noscript>` block lands every `[data-reveal]` element open too. Those elements
+start at `opacity: 0` and are revealed by `main.js`, so without that block a page
+whose script does not run — parse error, blocked script, stripped file — is a
+black rectangle and a portrait, with all the copy present but invisible.
