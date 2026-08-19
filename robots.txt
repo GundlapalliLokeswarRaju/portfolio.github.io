@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gundlapallilokeswarraju.github.io/portfolio.github.io/sitemap.xml

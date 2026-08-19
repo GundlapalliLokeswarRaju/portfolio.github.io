@@ -1,0 +1,287 @@
+/* ==========================================================================
+   CV viewer — Lokeswar Raju Gundlapalli
+
+   A frame around Lokeswar_Raju_Resume.pdf, not a document of its own. The PDF
+   is the single source of truth for the CV: this page's whole job is to show it,
+   offer a download, and never need editing when the PDF is replaced.
+
+   That last point is the constraint that shapes the file. The PDF path is
+   hard-coded in exactly one place per link and the filename never changes, so
+   updating the CV is "overwrite the file, commit, push" with no markup or CSS
+   touched. Anything that embedded a page count, a date or a version number here
+   would break that, so none of it does.
+   ========================================================================== */
+
+:root {
+    --bg: #060607;
+    --bg-lift: #0c0c0e;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-2: rgba(255, 255, 255, 0.18);
+
+    --text: #ece7df;
+    --muted: #a49c92;
+    --dim: #6f685f;
+
+    --bone: #d9c9a8;
+    --data: #5ecfc0;
+    --data-rgb: 94, 207, 192;
+
+    --display: 'Cormorant Garamond', 'Times New Roman', serif;
+    --ui: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --bar-h: 4.5rem;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    /* The viewer fills the window: bar on top, document taking the rest. The
+       page itself never scrolls — the PDF's own viewer does the scrolling, so
+       there is never a scrollbar inside a scrollbar. */
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    font-family: var(--ui);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    z-index: 20;
+    padding: 0.75rem 1rem;
+    background: var(--data);
+    color: #04110f;
+    font-size: 0.8rem;
+}
+
+:focus-visible {
+    outline: 2px solid var(--data);
+    outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Bar
+   -------------------------------------------------------------------------- */
+
+.bar {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem clamp(1rem, 3vw, 2rem);
+    padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+    background: var(--bg-lift);
+    border-bottom: 1px solid var(--line);
+}
+
+.bar-back {
+    flex: 0 0 auto;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bone);
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+
+.bar-back:hover {
+    opacity: 0.7;
+}
+
+/* Takes the slack so the actions stay hard right on wide screens and wrap
+   underneath rather than crowding on narrow ones. */
+.bar-id {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+.bar-name {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.bar-role {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 0.15rem;
+}
+
+.bar-actions {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* 44px minimum target, the same floor the portfolio holds to. */
+    min-height: 44px;
+    padding: 0 1.3rem;
+    border: 1px solid var(--line-2);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.btn:hover {
+    border-color: var(--text);
+}
+
+/* Teal is the evidence accent across the site, and downloading the CV is the
+   action this page exists for — so it gets the solid fill and everything else
+   stays outlined. */
+.btn-solid {
+    background: var(--data);
+    border-color: var(--data);
+    color: #04110f;
+}
+
+.btn-solid:hover {
+    background: var(--text);
+    border-color: var(--text);
+    color: #16161a;
+}
+
+/* --------------------------------------------------------------------------
+   Document
+   -------------------------------------------------------------------------- */
+
+.doc {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+}
+
+.doc-frame {
+    flex: 1 1 auto;
+    width: 100%;
+    border: 0;
+    /* Grey rather than near-black behind the sheet: a white page floating on a
+       mid grey reads as a document, where the same page on black glares. */
+    background: #2a2a30;
+}
+
+/* --------------------------------------------------------------------------
+   Fallback — what shows when the browser will not render a PDF inline.
+   Mostly mobile. It must stand on its own as a usable page, because for those
+   readers it is the only thing they see.
+   -------------------------------------------------------------------------- */
+
+.doc-fallback {
+    margin: auto;
+    padding: clamp(2rem, 8vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+    max-width: 44ch;
+    text-align: center;
+}
+
+.doc-fallback h1 {
+    font-family: var(--display);
+    font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.doc-fallback p {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.doc-fallback-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+}
+
+.doc-fallback-note {
+    font-size: 0.85rem;
+    color: var(--dim);
+}
+
+.doc-fallback-note a {
+    color: var(--data);
+    border-bottom: 1px solid rgba(var(--data-rgb), 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   Narrow screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 34rem) {
+    .bar {
+        gap: 0.75rem;
+    }
+
+    .bar-actions {
+        /* Full width and side by side, so the download button is a thumb-sized
+           target rather than a chip in the corner. */
+        width: 100%;
+    }
+
+    .bar-actions .btn {
+        flex: 1 1 0;
+        padding: 0 0.75rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+/* Printing this wrapper would produce a page of chrome around an embedded
+   object. The PDF is the printable artefact — print it from its own viewer. */
+@media print {
+    .bar {
+        display: none;
+    }
+
+    body {
+        background: #fff;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
