@@ -30,10 +30,12 @@ assets/
   css/resume.css        The CV only. Print-first, deliberately plain.
   js/main.js            Six independent behaviours (see below).
   img/lokesh.jpeg       Portrait.
-legacy-react/           The previous React 19 + Vite version, kept for
-                        reference. Nothing in the live site reads from it;
-                        delete it whenever you like.
 ```
+
+That is the whole repository. There is no build directory, no config and no
+dependency tree, because there is nothing to build — what is committed here is
+byte-for-byte what gets served. The previous React 19 + Vite version lived in
+`legacy-react/` until it was deleted; it is in the history if it is ever wanted.
 
 ## Icons
 
